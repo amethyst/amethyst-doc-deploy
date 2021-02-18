@@ -19,8 +19,8 @@ echo ---------------------------------------------
 echo - Preping Rust...
 echo ---------------------------------------------
 
-#rustup default stable
-#cargo install mdbook
+rustup default stable
+cargo install mdbook
 
 echo ---------------------------------------------
 echo - Generating Stable Book...
