@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["amethyst"] = [{"text":"impl&lt;'r, T&gt; EventReader&lt;'r&gt; for <a class=\"struct\" href=\"amethyst/struct.StateEventReader.html\" title=\"struct amethyst::StateEventReader\">StateEventReader</a>&lt;T&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: BindingTypes,&nbsp;</span>","synthetic":false,"types":["amethyst::state_event::StateEventReader"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

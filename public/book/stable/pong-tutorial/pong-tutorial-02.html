@@ -1,0 +1,810 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Drawing the Paddles - Amethyst Documentation</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../style/book.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../getting-started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../concepts/intro.html"><strong aria-hidden="true">3.</strong> Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/state.html"><strong aria-hidden="true">3.1.</strong> State</a></li><li class="chapter-item expanded "><a href="../concepts/entity_and_component.html"><strong aria-hidden="true">3.2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="../concepts/resource.html"><strong aria-hidden="true">3.3.</strong> Resource</a></li><li class="chapter-item expanded "><a href="../concepts/world.html"><strong aria-hidden="true">3.4.</strong> World</a></li><li class="chapter-item expanded "><a href="../concepts/system.html"><strong aria-hidden="true">3.5.</strong> System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/system/system_initialization.html"><strong aria-hidden="true">3.5.1.</strong> System Initialization</a></li><li class="chapter-item expanded "><a href="../concepts/system/system_desc_derive.html"><strong aria-hidden="true">3.5.2.</strong> SystemDesc Derive</a></li><li class="chapter-item expanded "><a href="../concepts/system/implementing_the_system_desc_trait.html"><strong aria-hidden="true">3.5.3.</strong> Implementing the SystemDesc Trait</a></li></ol></li><li class="chapter-item expanded "><a href="../concepts/dispatcher.html"><strong aria-hidden="true">3.6.</strong> Dispatcher</a></li><li class="chapter-item expanded "><a href="../concepts/event-channel.html"><strong aria-hidden="true">3.7.</strong> Event Channel</a></li></ol></li><li class="chapter-item expanded "><a href="../pong-tutorial.html"><strong aria-hidden="true">4.</strong> Pong Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-01.html"><strong aria-hidden="true">4.1.</strong> Setting up the project</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-02.html" class="active"><strong aria-hidden="true">4.2.</strong> Drawing the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-03.html"><strong aria-hidden="true">4.3.</strong> Moving the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-04.html"><strong aria-hidden="true">4.4.</strong> Making a Ball Move and Bounce</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-05.html"><strong aria-hidden="true">4.5.</strong> Winning Rounds and Keeping Score</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-06.html"><strong aria-hidden="true">4.6.</strong> Adding audio</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/contribution.html"><strong aria-hidden="true">4.7.</strong> Call for Contribution</a></li></ol></li><li class="chapter-item expanded "><a href="../math.html"><strong aria-hidden="true">5.</strong> Math</a></li><li class="chapter-item expanded "><a href="../input.html"><strong aria-hidden="true">6.</strong> Input</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../input/handling_input.html"><strong aria-hidden="true">6.1.</strong> Handling Input</a></li><li class="chapter-item expanded "><a href="../input/how_to_define_custom_control_bindings.html"><strong aria-hidden="true">6.2.</strong> How to Define Custom Control Bindings</a></li></ol></li><li class="chapter-item expanded "><a href="../assets.html"><strong aria-hidden="true">7.</strong> Assets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../assets/formats.html"><strong aria-hidden="true">7.1.</strong> Formats</a></li><li class="chapter-item expanded "><a href="../assets/how_to_use_assets.html"><strong aria-hidden="true">7.2.</strong> How to Use Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_assets.html"><strong aria-hidden="true">7.3.</strong> How to Define Custom Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_formats.html"><strong aria-hidden="true">7.4.</strong> How to Define Custom Formats</a></li></ol></li><li class="chapter-item expanded "><a href="../prefabs.html"><strong aria-hidden="true">8.</strong> Prefabs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prefabs/prefabs_in_amethyst.html"><strong aria-hidden="true">8.1.</strong> Prefabs in Amethyst</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_prelude.html"><strong aria-hidden="true">8.2.</strong> How to Define Prefabs: Prelude</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_simple.html"><strong aria-hidden="true">8.3.</strong> How to Define Prefabs: Simple</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_aggregate.html"><strong aria-hidden="true">8.4.</strong> How to Define Prefabs: Aggregate</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_adapter.html"><strong aria-hidden="true">8.5.</strong> How to Define Prefabs: Adapter</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_asset.html"><strong aria-hidden="true">8.6.</strong> How to Define Prefabs: Asset</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_multi_handle.html"><strong aria-hidden="true">8.7.</strong> How to Define Prefabs: Multi-Handle</a></li><li class="chapter-item expanded "><a href="../prefabs/prefabs_technical_explanation.html"><strong aria-hidden="true">8.8.</strong> Prefabs Technical Explanation</a></li></ol></li><li class="chapter-item expanded "><a href="../animation.html"><strong aria-hidden="true">9.</strong> Animation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../animation/interpolation.html"><strong aria-hidden="true">9.1.</strong> Interpolation</a></li><li class="chapter-item expanded "><a href="../animation/channel.html"><strong aria-hidden="true">9.2.</strong> Channel</a></li><li class="chapter-item expanded "><a href="../animation/sampler.html"><strong aria-hidden="true">9.3.</strong> Sampler</a></li><li class="chapter-item expanded "><a href="../animation/definition.html"><strong aria-hidden="true">9.4.</strong> Definition</a></li></ol></li><li class="chapter-item expanded "><a href="../controlling_system_execution.html"><strong aria-hidden="true">10.</strong> Controlling System Execution</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../controlling_system_execution/custom_game_data.html"><strong aria-hidden="true">10.1.</strong> Custom GameData</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/state-specific_dispatcher.html"><strong aria-hidden="true">10.2.</strong> State-specific Dispatcher</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/pausable_systems.html"><strong aria-hidden="true">10.3.</strong> Pausable Systems</a></li></ol></li><li class="chapter-item expanded "><a href="../sprites.html"><strong aria-hidden="true">11.</strong> Sprites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sprites/set_up_the_render_pass.html"><strong aria-hidden="true">11.1.</strong> Set Up The Render Pass</a></li><li class="chapter-item expanded "><a href="../sprites/load_the_texture.html"><strong aria-hidden="true">11.2.</strong> Load The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/define_the_sprite_sheet.html"><strong aria-hidden="true">11.3.</strong> Define The SpriteSheet</a></li><li class="chapter-item expanded "><a href="../sprites/sprite_render_component.html"><strong aria-hidden="true">11.4.</strong> SpriteRender Component</a></li><li class="chapter-item expanded "><a href="../sprites/modify_the_texture.html"><strong aria-hidden="true">11.5.</strong> Modify The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/orthographic_camera.html"><strong aria-hidden="true">11.6.</strong> Orthographic Camera</a></li></ol></li><li class="chapter-item expanded "><a href="../tiles.html"><strong aria-hidden="true">12.</strong> Tiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tiles/setup.html"><strong aria-hidden="true">12.1.</strong> Setup Features and Render Pass</a></li><li class="chapter-item expanded "><a href="../tiles/create_a_tile_map.html"><strong aria-hidden="true">12.2.</strong> Create a Tile Map</a></li></ol></li><li class="chapter-item expanded "><a href="../ui/introduction.html"><strong aria-hidden="true">13.</strong> User Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/simple_button.html"><strong aria-hidden="true">13.1.</strong> Creating a simple button</a></li><li class="chapter-item expanded "><a href="../ui/interacting.html"><strong aria-hidden="true">13.2.</strong> Interacting with the UI</a></li><li class="chapter-item expanded "><a href="../ui/state_interaction.html"><strong aria-hidden="true">13.3.</strong> Interacting through a state</a></li></ol></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">14.</strong> Testing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/test_examples.html"><strong aria-hidden="true">14.1.</strong> Test Examples</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">15.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files.html"><strong aria-hidden="true">16.</strong> Appendix A: Config Files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/a_config_files/arena_config.html"><strong aria-hidden="true">16.1.</strong> Adding an Arena Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/ball_config.html"><strong aria-hidden="true">16.2.</strong> Adding a Ball Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/paddle_configs.html"><strong aria-hidden="true">16.3.</strong> Adding Paddle Configs</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes.html"><strong aria-hidden="true">17.</strong> Appendix B: Migration Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/cgmath_to_nalgebra.html"><strong aria-hidden="true">17.1.</strong> cgmath to nalgebra</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/rendy_migration.html"><strong aria-hidden="true">17.2.</strong> Rendy Migration</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/specs_migration.html"><strong aria-hidden="true">17.3.</strong> Specs Migration</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/c_feature_gates.html"><strong aria-hidden="true">18.</strong> Appendix C: Feature Gates</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst Documentation</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#drawing-the-paddles" id="drawing-the-paddles">Drawing the paddles</a></h1>
+<p>Now let's do some drawing! But to draw something, we need something to draw. In
+Amethyst, those &quot;somethings&quot; are called entities.</p>
+<p>Amethyst uses an Entity-Component-System (ECS) framework called <strong>specs</strong>, also
+written in Rust. You can learn more about Specs in the <a href="https://specs.amethyst.rs/docs/tutorials/">The Specs Book</a>.
+Here's a basic explanation of ECS from the documentation:</p>
+<blockquote>
+<p>The term ECS is shorthand for Entity-Component-System. These are the three
+core concepts. Each <strong>entity</strong> is associated with some <strong>components</strong>. Those entities
+and components are processed by <strong>systems</strong>. This way, you have your data
+(components) completely separated from the behavior (systems). An entity just
+logically groups components; so a Velocity component can be applied to the
+Position component of the same entity.</p>
+</blockquote>
+<p>I recommend at least skimming the rest of The Specs Book to get a good intuition
+of how Amethyst works, especially if you're new to ECS.</p>
+<h2><a class="header" href="#a-quick-refactor" id="a-quick-refactor">A quick refactor</a></h2>
+<p>Before adding more of the Pong logic, we are going to separate the application
+initialization code from the Pong code.</p>
+<ol>
+<li>
+<p>In the <code>src</code> directory, create a new file called <code>pong.rs</code> and add the
+following <code>use</code> statements. These are needed to make it through this chapter:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span>use amethyst::{
+    assets::{AssetStorage, Loader, Handle},
+    core::transform::Transform,
+    ecs::{Component, DenseVecStorage},
+    prelude::*,
+    renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
+};
+</code></pre>
+</li>
+<li>
+<p>Move the <code>Pong</code> struct and the <code>impl SimpleState for Pong</code> block from
+<code>main.rs</code> into <code>pong.rs</code>.</p>
+</li>
+<li>
+<p>In <code>main.rs</code> declare <code>pong</code> as a module and import the <code>Pong</code> state:</p>
+<pre><code class="language-rust ignore">mod pong;
+
+use crate::pong::Pong;
+</code></pre>
+</li>
+</ol>
+<h2><a class="header" href="#get-around-the-world" id="get-around-the-world">Get around the World</a></h2>
+<p>First, in <code>pong.rs</code>, let's add a new method to our <code>State</code> implementation: <code>on_start</code>.
+This method is called when the State starts. We will leave it empty for now.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">struct Pong;
+</span>impl SimpleState for Pong {
+    fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+
+    }
+}
+</code></pre>
+<p>The <code>StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;</code> is a structure given to all State methods.
+The important part of its content here is its <code>world</code> field.</p>
+<p>The <code>World</code> structure stores all of the game's runtime data -- entities and components.</p>
+<h2><a class="header" href="#rendering-the-game-using-the-camera" id="rendering-the-game-using-the-camera">Rendering the game using the Camera</a></h2>
+<p>The first thing we will need in our game is a <code>Camera</code>. This is the component that
+will determine what is rendered on screen. It behaves just like a real-life
+camera: it looks at a specific part of the world and can be moved around at
+will.</p>
+<ol>
+<li>
+<p>Define the size of the playable area at the top of <code>pong.rs</code>.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen">pub const ARENA_HEIGHT: f32 = 100.0;
+pub const ARENA_WIDTH: f32 = 100.0;
+</code></pre>
+<p>These are public as they will be used in other modules.</p>
+</li>
+<li>
+<p>Create the camera entity.</p>
+<p>In pong, we want the camera to cover the entire arena. Let's do it in a new function <code>initialise_camera</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">const ARENA_HEIGHT: f32 = 100.0;
+</span><span class="boring">const ARENA_WIDTH: f32 = 100.0;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">use amethyst::renderer::Camera;
+</span><span class="boring">use amethyst::core::Transform;
+</span>fn initialise_camera(world: &amp;mut World) {
+    // Setup camera in a way that our screen covers whole arena and (0, 0) is in the bottom left.
+    let mut transform = Transform::default();
+    transform.set_translation_xyz(ARENA_WIDTH * 0.5, ARENA_HEIGHT * 0.5, 1.0);
+
+    world
+        .create_entity()
+        .with(Camera::standard_2d(ARENA_WIDTH, ARENA_HEIGHT))
+        .with(transform)
+        .build();
+}
+</code></pre>
+<p>This creates an entity that will carry our camera, with an orthographic
+projection of the size of our arena. We also attach a <code>Transform</code> component,
+representing its position in the world.</p>
+<p>The <code>Camera::standard_2d</code> function creates a default 2D camera that is
+pointed along the world's <strong>Z</strong> axis. The area in front of the camera has a
+horizontal <strong>X</strong> axis, and a vertical <strong>Y</strong> axis. The <strong>X</strong> axis increases
+moving to the right, and the <strong>Y</strong> axis increases moving up. The camera's
+position is the center of the viewable area. We position the camera with
+<code>set_translation_xyz</code> to the middle of our game arena so that <code>(0, 0)</code> is
+the bottom left of the viewable area, and <code>(ARENA_WIDTH, ARENA_HEIGHT)</code> is
+the top right.</p>
+<p>Notice that we also shifted the camera <code>1.0</code> along the <strong>Z</strong> axis. This is
+to make sure that the camera is able to see the sprites that sit on the
+<strong>XY</strong> plane where <strong>Z</strong> is 0.0:</p>
+<p><img src="../images/pong_tutorial/camera.png" alt="Camera Z shift" /></p>
+<blockquote>
+<p><strong>Note:</strong> Orthographic projections are a type of 3D visualization on 2D screens
+that keeps the size ratio of the 2D images displayed intact. They are very
+useful in games without actual 3D, like our pong example. Perspective projections
+are another way of displaying graphics, more useful in 3D scenes.</p>
+</blockquote>
+</li>
+<li>
+<p>To finish setting up the camera, we need to call <code>initialise_camera</code> from the
+Pong state's <code>on_start</code> method:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">fn initialise_camera(world: &amp;mut World) { }
+</span><span class="boring">struct MyState;
+</span><span class="boring">impl SimpleState for MyState {
+</span>fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+    let world = data.world;
+
+    initialise_camera(world);
+}
+<span class="boring">}
+</span></code></pre>
+</li>
+</ol>
+<p>Now that our camera is set up, it's time to add the paddles.</p>
+<h2><a class="header" href="#our-first-component" id="our-first-component">Our first Component</a></h2>
+<p>Now, we will create the <code>Paddle</code> component, all in <code>pong.rs</code>.</p>
+<ol>
+<li>
+<p>Define constants for the paddle width and height.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen">pub const PADDLE_HEIGHT: f32 = 16.0;
+pub const PADDLE_WIDTH: f32 = 4.0;
+</code></pre>
+</li>
+<li>
+<p>Define the <code>Side</code> enum and <code>Paddle</code> struct:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">pub const PADDLE_HEIGHT: f32 = 16.0;
+</span><span class="boring">pub const PADDLE_WIDTH: f32 = 4.0;
+</span><span class="boring">
+</span>#[derive(PartialEq, Eq)]
+pub enum Side {
+    Left,
+    Right,
+}
+
+pub struct Paddle {
+    pub side: Side,
+    pub width: f32,
+    pub height: f32,
+}
+
+impl Paddle {
+    fn new(side: Side) -&gt; Paddle {
+        Paddle {
+            side,
+            width: PADDLE_WIDTH,
+            height: PADDLE_HEIGHT,
+        }
+    }
+}
+</code></pre>
+<p><em>&quot;But that just looks like a regular struct!&quot;</em> you might say.</p>
+<p>And you're right, the special sauce comes next.</p>
+</li>
+<li>
+<p>Implement the <code>Component</code> trait for <code>Paddle</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use amethyst::ecs::{Component, DenseVecStorage};
+</span><span class="boring">
+</span><span class="boring">struct Paddle;
+</span><span class="boring">
+</span>impl Component for Paddle {
+    type Storage = DenseVecStorage&lt;Self&gt;;
+}
+</code></pre>
+<p>By implementing <code>Component</code> for the <code>Paddle</code> struct, it can now be attached
+to entities in the game.</p>
+<p>When implementing the <code>Component</code> trait, we must specify the storage type.
+Different storage types optimize for faster access, lower memory usage, or a
+balance between the two. For more information on storage types, check out the
+<a href="https://specs.amethyst.rs/docs/tutorials/05_storages.html#densevecstorage">Specs documentation</a>.</p>
+</li>
+</ol>
+<h2><a class="header" href="#initialise-some-entities" id="initialise-some-entities">Initialise some entities</a></h2>
+<p>Now that we have a <code>Paddle</code> component, let's define some paddle entities that
+include that component and add them to our <code>World</code>.</p>
+<p>First let's look at our imports:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span>use amethyst::core::transform::Transform;
+</code></pre>
+<p><code>Transform</code> is an Amethyst ECS component which carries
+position and orientation information. It is relative
+to a parent, if one exists.</p>
+<p>Okay, let's make some entities! We'll define an <code>initialise_paddles</code> function
+which will create left and right paddle entities and attach a <code>Transform</code>
+component to each to position them in our world. As we defined earlier,
+our canvas is from <code>0.0</code> to <code>ARENA_WIDTH</code> in the horizontal dimension and
+from <code>0.0</code> to <code>ARENA_HEIGHT</code> in the vertical dimension.
+Keep in mind that the anchor point of our entities will be in the middle of the
+image we will want to render on top of them. This is a good rule to follow in
+general, as it makes operations like rotation easier.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">use amethyst::core::Transform;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">enum Side {
+</span><span class="boring">  Left,
+</span><span class="boring">  Right,
+</span><span class="boring">}
+</span><span class="boring">struct Paddle;
+</span><span class="boring">impl amethyst::ecs::Component for Paddle {
+</span><span class="boring">  type Storage = amethyst::ecs::VecStorage&lt;Paddle&gt;;
+</span><span class="boring">}
+</span><span class="boring">impl Paddle {
+</span><span class="boring">  fn new(side: Side) -&gt; Paddle { Paddle }
+</span><span class="boring">}
+</span><span class="boring">const PADDLE_HEIGHT: f32 = 16.0;
+</span><span class="boring">const PADDLE_WIDTH: f32 = 4.0;
+</span><span class="boring">const ARENA_HEIGHT: f32 = 100.0;
+</span><span class="boring">const ARENA_WIDTH: f32 = 100.0;
+</span>/// Initialises one paddle on the left, and one paddle on the right.
+fn initialise_paddles(world: &amp;mut World) {
+    let mut left_transform = Transform::default();
+    let mut right_transform = Transform::default();
+
+    // Correctly position the paddles.
+    let y = ARENA_HEIGHT / 2.0;
+    left_transform.set_translation_xyz(PADDLE_WIDTH * 0.5, y, 0.0);
+    right_transform.set_translation_xyz(ARENA_WIDTH - PADDLE_WIDTH * 0.5, y, 0.0);
+
+    // Create a left plank entity.
+    world
+        .create_entity()
+        .with(Paddle::new(Side::Left))
+        .with(left_transform)
+        .build();
+
+    // Create right plank entity.
+    world
+        .create_entity()
+        .with(Paddle::new(Side::Right))
+        .with(right_transform)
+        .build();
+}
+</code></pre>
+<p>This is all the information Amethyst needs to track and move the paddles in our
+virtual world, but we'll need to do some more work to actually <em>draw</em> them.</p>
+<p>As a sanity check, let's make sure the code for initialising the paddles
+compiles. Update the <code>on_start</code> method to the following:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">fn initialise_paddles(world: &amp;mut World) { }
+</span><span class="boring">fn initialise_camera(world: &amp;mut World) { }
+</span><span class="boring">struct MyState;
+</span><span class="boring">impl SimpleState for MyState {
+</span>fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+    let world = data.world;
+
+    initialise_paddles(world);
+    initialise_camera(world);
+}
+<span class="boring">}
+</span></code></pre>
+<p>Let's run our blank screen game!</p>
+<pre><code class="language-text ignore">Tried to fetch resource of type `MaskedStorage&lt;Paddle&gt;`[^1] from the `World`, but the resource does not exist.
+
+You may ensure the resource exists through one of the following methods:
+
+* Inserting it when the world is created: `world.insert(..)`.
+* If the resource implements `Default`, include it in a system's `SystemData`, and ensure the system is registered in the dispatcher.
+* If the resource does not implement `Default`, insert in the world during `System::setup`.
+
+[^1]: Full type name: `amethyst::ecs::storage::MaskedStorage&lt;pong::Paddle&gt;`
+</code></pre>
+<p>Uh oh, what's wrong?</p>
+<p>For a <code>Component</code> to be used, there must be a <code>Storage&lt;ComponentType&gt;</code> resource
+set up in the <code>World</code>. The error message above means we have registered the
+<code>Paddle</code> component on an entity, but have not set up the <code>Storage</code>. We can fix
+this by adding the following line before <code>initialise_paddles(world)</code> in the
+<code>on_start</code> method:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::ecs::{World, WorldExt};
+</span><span class="boring">struct Paddle;
+</span><span class="boring">impl amethyst::ecs::Component for Paddle {
+</span><span class="boring">  type Storage = amethyst::ecs::VecStorage&lt;Paddle&gt;;
+</span><span class="boring">}
+</span><span class="boring">fn register() {
+</span><span class="boring">  let mut world = World::new();
+</span>world.register::&lt;Paddle&gt;();
+<span class="boring">}
+</span></code></pre>
+<p>This is rather inconvenient — to need to manually register each component
+before it can be used. There <em>must</em> be a better way. <strong>Hint:</strong> there is.</p>
+<p>When we add systems to our application, any component that a <code>System</code> uses is
+automatically registered.
+However, as we haven't got any <code>System</code>s, we have to
+live with registering the <code>Paddle</code> component manually.</p>
+<p>Let's run the game again.</p>
+<h2><a class="header" href="#bundles" id="bundles">Bundles</a></h2>
+<p>Amethyst has a lot of internal systems it uses to keep things running we need
+to bring into the context of the <code>World</code>. For simplicity, these have been
+grouped into &quot;Bundles&quot; which include related systems and resources. We can
+add these to our Application's <code>GameData</code> using the <code>with_bundle</code> method,
+similarly to how you would register a system. We already have <code>RenderBundle</code> in place,
+registering another one will look similar. You have to first import
+<code>TransformBundle</code>, then register it as follows:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span>use amethyst::core::transform::TransformBundle;
+<span class="boring">
+</span><span class="boring">use amethyst::{
+</span><span class="boring">    prelude::*,
+</span><span class="boring">    utils::application_root_dir,
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">struct Pong;
+</span><span class="boring">impl SimpleState for Pong { }
+</span><span class="boring">
+</span>fn main() -&gt; amethyst::Result&lt;()&gt; {
+<span class="boring">  amethyst::start_logger(Default::default());
+</span><span class="boring">
+</span><span class="boring">  let app_root = application_root_dir()?;
+</span><span class="boring">  let display_config_path =
+</span><span class="boring">      app_root.join(&quot;examples/pong_tutorial_02/config/display.ron&quot;);
+</span><span class="boring">
+</span>    // ...
+    let game_data = GameDataBuilder::default()
+        // ...
+
+        // Add the transform bundle which handles tracking entity positions
+        .with_bundle(TransformBundle::new())?;
+
+<span class="boring">  let assets_dir = &quot;/&quot;;
+</span><span class="boring">  let mut game = Application::new(assets_dir, Pong, game_data)?;
+</span><span class="boring">  Ok(())
+</span>}
+</code></pre>
+<p>This time, when you run the game you should see the familiar black screen.
+Hooray!</p>
+<h2><a class="header" href="#drawing" id="drawing">Drawing</a></h2>
+<p>This section will finally allow us to see something.</p>
+<p>The first thing we will have to do is load the sprite sheet we will use for all
+our graphics in the game. Create a <code>texture</code> folder in the <code>assets</code> directory of the project.
+This will contain the <a href="../images/pong_tutorial/pong_spritesheet.png">spritesheet texture</a> <code>pong_spritesheet.png</code>, which we
+need to render the elements of the game.  We will perform the loading in a new
+function in <code>pong.rs</code> called <code>load_sprite_sheet</code>.</p>
+<p>First, let's declare the function and load the sprite sheet's image data.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use amethyst::{
+</span><span class="boring">    assets::{AssetStorage, Loader, Handle},
+</span><span class="boring">    core::transform::Transform,
+</span><span class="boring">    ecs::{Component, DenseVecStorage},
+</span><span class="boring">    prelude::*,
+</span><span class="boring">    renderer::{
+</span><span class="boring">        camera::Camera,
+</span><span class="boring">        formats::texture::ImageFormat,
+</span><span class="boring">        sprite::{SpriteRender, SpriteSheet, SpriteSheetFormat},
+</span><span class="boring">        Texture,
+</span><span class="boring">    },
+</span><span class="boring">};
+</span><span class="boring">
+</span>fn load_sprite_sheet(world: &amp;mut World) -&gt; Handle&lt;SpriteSheet&gt; {
+    // Load the sprite sheet necessary to render the graphics.
+    // The texture is the pixel data
+    // `texture_handle` is a cloneable reference to the texture
+    let texture_handle = {
+        let loader = world.read_resource::&lt;Loader&gt;();
+        let texture_storage = world.read_resource::&lt;AssetStorage&lt;Texture&gt;&gt;();
+        loader.load(
+            &quot;texture/pong_spritesheet.png&quot;,
+            ImageFormat::default(),
+            (),
+            &amp;texture_storage,
+        )
+    };
+
+    //...
+<span class="boring">  unimplemented!()
+</span>}
+</code></pre>
+<p>The <code>Loader</code> is an asset loader which is defined as a resource (not an
+<code>Entity</code>, <code>Component</code>, or <code>System</code>, but still a part of our ECS <code>World</code>). It was
+created when we built our Application in <code>main.rs</code>, and it can read assets like
+.obj files, but also it can <code>load</code> a .png as a <code>Texture</code> as in our use case.</p>
+<blockquote>
+<p>Resources in Specs are a type of data which can be shared between systems,
+while being independent of entities, in contrast to components, which are
+attached to specific entities.</p>
+</blockquote>
+<p>The <code>AssetStorage&lt;Texture&gt;</code> is also a resource; this is where the loader
+puts the <code>Texture</code> it will load from our sprite sheet. In order to manage them
+while remaining fast, Amethyst does not give us direct access to the assets we load.
+If it did otherwise, we would have to wait for the texture to be fully loaded to do all the
+other things we have to prepare, which would be a waste of time!
+Instead, the <code>load</code> function will return a <code>Handle&lt;Texture&gt;</code>.
+This handle &quot;points&quot; to the place where the asset will be loaded. In Rust terms, it is
+equivalent to a reference-counted option. It is extremely useful, especially as cloning
+the handle does not clone the asset in memory, so many things can use the same asset at once.</p>
+<p>Alongside our sprite sheet texture, we need a file describing where the sprites
+are on the sheet. Let's create, right next to it, a file called
+<code>pong_spritesheet.ron</code>. It will contain the following sprite sheet definition:</p>
+<pre><code class="language-text ignore">List((
+    texture_width: 8,
+    texture_height: 16,
+    sprites: [
+        (
+            x: 0,
+            y: 0,
+            width: 4,
+            height: 16,
+        ),
+        (
+            x: 4,
+            y: 0,
+            width: 4,
+            height: 4,
+        ),
+    ],
+))
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Make sure to pay attention to the kind of parentheses in the ron file.
+Especially, if you are used to writing JSON or similar format files, you might
+be tempted to use curly braces there; that will however lead to very
+hard-to-debug errors, especially since amethyst will not warn you about that
+when compiling.</p>
+</blockquote>
+<p>Finally, we load the file containing the position of each sprite on the sheet.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use amethyst::{
+</span><span class="boring">    assets::{AssetStorage, Handle, Loader},
+</span><span class="boring">    core::transform::Transform,
+</span><span class="boring">    ecs::{Component, DenseVecStorage},
+</span><span class="boring">    prelude::*,
+</span><span class="boring">    renderer::{
+</span><span class="boring">        camera::Camera,
+</span><span class="boring">        formats::texture::ImageFormat,
+</span><span class="boring">        sprite::{SpriteRender, SpriteSheet, SpriteSheetFormat},
+</span><span class="boring">        Texture,
+</span><span class="boring">    },
+</span><span class="boring">};
+</span><span class="boring">
+</span>fn load_sprite_sheet(world: &amp;mut World) -&gt; Handle&lt;SpriteSheet&gt; {
+<span class="boring">
+</span><span class="boring">  let texture_handle = {
+</span><span class="boring">      let loader = world.read_resource::&lt;Loader&gt;();
+</span><span class="boring">      let texture_storage = world.read_resource::&lt;AssetStorage&lt;Texture&gt;&gt;();
+</span><span class="boring">      loader.load(
+</span><span class="boring">          &quot;texture/pong_spritesheet.png&quot;,
+</span><span class="boring">          ImageFormat::default(),
+</span><span class="boring">          (),
+</span><span class="boring">          &amp;texture_storage,
+</span><span class="boring">      )
+</span><span class="boring">  };
+</span><span class="boring">
+</span>    // ...
+
+    let loader = world.read_resource::&lt;Loader&gt;();
+    let sprite_sheet_store = world.read_resource::&lt;AssetStorage&lt;SpriteSheet&gt;&gt;();
+    loader.load(
+        &quot;texture/pong_spritesheet.ron&quot;, // Here we load the associated ron file
+        SpriteSheetFormat(texture_handle),
+        (),
+        &amp;sprite_sheet_store,
+    )
+<span class="boring">}
+</span></code></pre>
+<p>This is where we have to use the texture handle. The <code>Loader</code> will take the
+file containing the sprites' positions and the texture handle, and create a
+nicely packaged <code>SpriteSheet</code> struct. It is this struct that we will be using
+to actually draw stuff on the screen.</p>
+<p>Please note that the order of sprites declared in the sprite sheet file
+is also significant, as sprites are referenced by the index in
+the vector. If you're wondering about the ball sprite, it does exist on the
+image, but we will get to it in a later part of the tutorial.</p>
+<p>So far, so good. We have a sprite sheet loaded, now we need to link the sprites
+to the paddles. We update the <code>initialise_paddles</code> function by changing its
+signature to:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">use amethyst::{assets::Handle, renderer::sprite::SpriteSheet};
+</span>fn initialise_paddles(world: &amp;mut World, sprite_sheet_handle: Handle&lt;SpriteSheet&gt;)
+<span class="boring">{ }
+</span></code></pre>
+<p>Inside <code>initialise_paddles</code>, we construct a <code>SpriteRender</code> for a paddle. We
+only need one here, since the only difference between the two paddles is that
+the right one is flipped horizontally.</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">use amethyst::{assets::Handle, renderer::{SpriteRender, SpriteSheet}};
+</span><span class="boring">fn initialise_paddles(world: &amp;mut World, sprite_sheet_handle: Handle&lt;SpriteSheet&gt;) {
+</span>// Assign the sprites for the paddles
+let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);  // paddle is the first sprite in the sprite_sheet
+<span class="boring">}
+</span></code></pre>
+<p><code>SpriteRender</code> is the <code>Component</code> that indicates which sprite of which sprite
+sheet should be drawn for a particular entity. Since the paddle is the first
+sprite in the sprite sheet, we use <code>0</code> for the <code>sprite_number</code>.</p>
+<p>Next we simply add the components to the paddle entities:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">use amethyst::assets::Handle;
+</span><span class="boring">use amethyst::renderer::sprite::{SpriteSheet, SpriteRender};
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">fn initialise_paddles(world: &amp;mut World, sprite_sheet_handle: Handle&lt;SpriteSheet&gt;) {
+</span><span class="boring">let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);  // paddle is the first sprite in the sprite_sheet
+</span>// Create a left plank entity.
+world
+    .create_entity()
+    .with(sprite_render.clone())
+    // ... other components
+    .build();
+
+// Create right plank entity.
+world
+    .create_entity()
+    .with(sprite_render)
+    // ... other components
+    .build();
+<span class="boring">}
+</span></code></pre>
+<p>We're nearly there, we just have to wire up the sprite to the paddles. We put it
+all together in the <code>on_start()</code> method:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::assets::Handle;
+</span><span class="boring">use amethyst::prelude::*;
+</span><span class="boring">use amethyst::renderer::{sprite::SpriteSheet, Texture};
+</span><span class="boring">use amethyst::ecs::World;
+</span><span class="boring">struct Paddle;
+</span><span class="boring">impl amethyst::ecs::Component for Paddle {
+</span><span class="boring">  type Storage = amethyst::ecs::VecStorage&lt;Paddle&gt;;
+</span><span class="boring">}
+</span><span class="boring">fn initialise_paddles(world: &amp;mut World, spritesheet: Handle&lt;SpriteSheet&gt;) { }
+</span><span class="boring">fn initialise_camera(world: &amp;mut World) { }
+</span><span class="boring">fn load_sprite_sheet(world: &amp;mut World) -&gt; Handle&lt;SpriteSheet&gt; { unimplemented!() }
+</span><span class="boring">struct MyState;
+</span><span class="boring">impl SimpleState for MyState {
+</span>fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+    let world = data.world;
+
+    // Load the spritesheet necessary to render the graphics.
+    let sprite_sheet_handle = load_sprite_sheet(world);
+
+    world.register::&lt;Paddle&gt;();
+
+    initialise_paddles(world, sprite_sheet_handle);
+    initialise_camera(world);
+}
+<span class="boring">}
+</span></code></pre>
+<p>And we're done. Let's run our game and have fun!</p>
+<p>If all is well, we should get something that looks like this:</p>
+<p><img src="../images/pong_tutorial/pong_02.png" alt="Step two" /></p>
+<p>In the next chapter, we'll explore the &quot;S&quot; in ECS and actually get these paddles
+moving!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../pong-tutorial/pong-tutorial-01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../pong-tutorial/pong-tutorial-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../pong-tutorial/pong-tutorial-01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../pong-tutorial/pong-tutorial-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../style/book.js"></script>
+        
+
+        
+
+    </body>
+</html>

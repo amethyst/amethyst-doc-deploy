@@ -1,0 +1,608 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Interacting through a state - Amethyst Documentation</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../style/book.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../getting-started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../concepts/intro.html"><strong aria-hidden="true">3.</strong> Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/state.html"><strong aria-hidden="true">3.1.</strong> State</a></li><li class="chapter-item expanded "><a href="../concepts/entity_and_component.html"><strong aria-hidden="true">3.2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="../concepts/resource.html"><strong aria-hidden="true">3.3.</strong> Resource</a></li><li class="chapter-item expanded "><a href="../concepts/world.html"><strong aria-hidden="true">3.4.</strong> World</a></li><li class="chapter-item expanded "><a href="../concepts/system.html"><strong aria-hidden="true">3.5.</strong> System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/system/system_initialization.html"><strong aria-hidden="true">3.5.1.</strong> System Initialization</a></li><li class="chapter-item expanded "><a href="../concepts/system/system_desc_derive.html"><strong aria-hidden="true">3.5.2.</strong> SystemDesc Derive</a></li><li class="chapter-item expanded "><a href="../concepts/system/implementing_the_system_desc_trait.html"><strong aria-hidden="true">3.5.3.</strong> Implementing the SystemDesc Trait</a></li></ol></li><li class="chapter-item expanded "><a href="../concepts/dispatcher.html"><strong aria-hidden="true">3.6.</strong> Dispatcher</a></li><li class="chapter-item expanded "><a href="../concepts/event-channel.html"><strong aria-hidden="true">3.7.</strong> Event Channel</a></li></ol></li><li class="chapter-item expanded "><a href="../pong-tutorial.html"><strong aria-hidden="true">4.</strong> Pong Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-01.html"><strong aria-hidden="true">4.1.</strong> Setting up the project</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-02.html"><strong aria-hidden="true">4.2.</strong> Drawing the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-03.html"><strong aria-hidden="true">4.3.</strong> Moving the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-04.html"><strong aria-hidden="true">4.4.</strong> Making a Ball Move and Bounce</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-05.html"><strong aria-hidden="true">4.5.</strong> Winning Rounds and Keeping Score</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-06.html"><strong aria-hidden="true">4.6.</strong> Adding audio</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/contribution.html"><strong aria-hidden="true">4.7.</strong> Call for Contribution</a></li></ol></li><li class="chapter-item expanded "><a href="../math.html"><strong aria-hidden="true">5.</strong> Math</a></li><li class="chapter-item expanded "><a href="../input.html"><strong aria-hidden="true">6.</strong> Input</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../input/handling_input.html"><strong aria-hidden="true">6.1.</strong> Handling Input</a></li><li class="chapter-item expanded "><a href="../input/how_to_define_custom_control_bindings.html"><strong aria-hidden="true">6.2.</strong> How to Define Custom Control Bindings</a></li></ol></li><li class="chapter-item expanded "><a href="../assets.html"><strong aria-hidden="true">7.</strong> Assets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../assets/formats.html"><strong aria-hidden="true">7.1.</strong> Formats</a></li><li class="chapter-item expanded "><a href="../assets/how_to_use_assets.html"><strong aria-hidden="true">7.2.</strong> How to Use Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_assets.html"><strong aria-hidden="true">7.3.</strong> How to Define Custom Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_formats.html"><strong aria-hidden="true">7.4.</strong> How to Define Custom Formats</a></li></ol></li><li class="chapter-item expanded "><a href="../prefabs.html"><strong aria-hidden="true">8.</strong> Prefabs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prefabs/prefabs_in_amethyst.html"><strong aria-hidden="true">8.1.</strong> Prefabs in Amethyst</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_prelude.html"><strong aria-hidden="true">8.2.</strong> How to Define Prefabs: Prelude</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_simple.html"><strong aria-hidden="true">8.3.</strong> How to Define Prefabs: Simple</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_aggregate.html"><strong aria-hidden="true">8.4.</strong> How to Define Prefabs: Aggregate</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_adapter.html"><strong aria-hidden="true">8.5.</strong> How to Define Prefabs: Adapter</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_asset.html"><strong aria-hidden="true">8.6.</strong> How to Define Prefabs: Asset</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_multi_handle.html"><strong aria-hidden="true">8.7.</strong> How to Define Prefabs: Multi-Handle</a></li><li class="chapter-item expanded "><a href="../prefabs/prefabs_technical_explanation.html"><strong aria-hidden="true">8.8.</strong> Prefabs Technical Explanation</a></li></ol></li><li class="chapter-item expanded "><a href="../animation.html"><strong aria-hidden="true">9.</strong> Animation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../animation/interpolation.html"><strong aria-hidden="true">9.1.</strong> Interpolation</a></li><li class="chapter-item expanded "><a href="../animation/channel.html"><strong aria-hidden="true">9.2.</strong> Channel</a></li><li class="chapter-item expanded "><a href="../animation/sampler.html"><strong aria-hidden="true">9.3.</strong> Sampler</a></li><li class="chapter-item expanded "><a href="../animation/definition.html"><strong aria-hidden="true">9.4.</strong> Definition</a></li></ol></li><li class="chapter-item expanded "><a href="../controlling_system_execution.html"><strong aria-hidden="true">10.</strong> Controlling System Execution</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../controlling_system_execution/custom_game_data.html"><strong aria-hidden="true">10.1.</strong> Custom GameData</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/state-specific_dispatcher.html"><strong aria-hidden="true">10.2.</strong> State-specific Dispatcher</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/pausable_systems.html"><strong aria-hidden="true">10.3.</strong> Pausable Systems</a></li></ol></li><li class="chapter-item expanded "><a href="../sprites.html"><strong aria-hidden="true">11.</strong> Sprites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sprites/set_up_the_render_pass.html"><strong aria-hidden="true">11.1.</strong> Set Up The Render Pass</a></li><li class="chapter-item expanded "><a href="../sprites/load_the_texture.html"><strong aria-hidden="true">11.2.</strong> Load The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/define_the_sprite_sheet.html"><strong aria-hidden="true">11.3.</strong> Define The SpriteSheet</a></li><li class="chapter-item expanded "><a href="../sprites/sprite_render_component.html"><strong aria-hidden="true">11.4.</strong> SpriteRender Component</a></li><li class="chapter-item expanded "><a href="../sprites/modify_the_texture.html"><strong aria-hidden="true">11.5.</strong> Modify The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/orthographic_camera.html"><strong aria-hidden="true">11.6.</strong> Orthographic Camera</a></li></ol></li><li class="chapter-item expanded "><a href="../tiles.html"><strong aria-hidden="true">12.</strong> Tiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tiles/setup.html"><strong aria-hidden="true">12.1.</strong> Setup Features and Render Pass</a></li><li class="chapter-item expanded "><a href="../tiles/create_a_tile_map.html"><strong aria-hidden="true">12.2.</strong> Create a Tile Map</a></li></ol></li><li class="chapter-item expanded "><a href="../ui/introduction.html"><strong aria-hidden="true">13.</strong> User Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/simple_button.html"><strong aria-hidden="true">13.1.</strong> Creating a simple button</a></li><li class="chapter-item expanded "><a href="../ui/interacting.html"><strong aria-hidden="true">13.2.</strong> Interacting with the UI</a></li><li class="chapter-item expanded "><a href="../ui/state_interaction.html" class="active"><strong aria-hidden="true">13.3.</strong> Interacting through a state</a></li></ol></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">14.</strong> Testing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/test_examples.html"><strong aria-hidden="true">14.1.</strong> Test Examples</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">15.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files.html"><strong aria-hidden="true">16.</strong> Appendix A: Config Files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/a_config_files/arena_config.html"><strong aria-hidden="true">16.1.</strong> Adding an Arena Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/ball_config.html"><strong aria-hidden="true">16.2.</strong> Adding a Ball Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/paddle_configs.html"><strong aria-hidden="true">16.3.</strong> Adding Paddle Configs</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes.html"><strong aria-hidden="true">17.</strong> Appendix B: Migration Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/cgmath_to_nalgebra.html"><strong aria-hidden="true">17.1.</strong> cgmath to nalgebra</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/rendy_migration.html"><strong aria-hidden="true">17.2.</strong> Rendy Migration</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/specs_migration.html"><strong aria-hidden="true">17.3.</strong> Specs Migration</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/c_feature_gates.html"><strong aria-hidden="true">18.</strong> Appendix C: Feature Gates</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst Documentation</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#state-interaction" id="state-interaction">State Interaction</a></h2>
+<p>Let's declare our state, and call it <code>MenuState</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::ecs::Entity;
+</span><span class="boring">
+</span>#[derive(Default)]
+pub struct MenuState {
+    button: Option&lt;Entity&gt;,
+}
+</code></pre>
+<p>We give it a field named <code>button</code> which will hold an entity wrapped in
+an <code>Option&lt;T&gt;</code>. This simplifies things since we can now derive <code>Default</code>
+trait on it and we can make it as our initial state that the application
+will start off as.</p>
+<p>It will also serve to hold our ui entity.</p>
+<p>In our <code>on_start</code> method of this state we can create the button as shown in
+previous chapters, but here we will save the entity in our struct:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::{
+</span><span class="boring"> assets::{AssetStorage, Loader},
+</span><span class="boring">	ecs::{Entity, World, WorldExt},
+</span><span class="boring">	ui::{Anchor, FontHandle, Interactable, LineMode, TtfFormat, UiText, UiTransform},
+</span><span class="boring">	prelude::{Builder, GameData, SimpleState, StateData},
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">#[derive(Default)]
+</span><span class="boring">pub struct MenuState {
+</span><span class="boring">  button: Option&lt;Entity&gt;,
+</span><span class="boring">}
+</span>impl SimpleState for MenuState {
+    fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        let world = data.world;
+
+<span class="boring">
+</span>        /* Create the transform */
+        let ui_transform = UiTransform::new(
+        // ...
+<span class="boring">	    String::from(&quot;simple_button&quot;), // id
+</span><span class="boring">      Anchor::Middle,                // anchor
+</span><span class="boring">      Anchor::Middle,                // pivot
+</span><span class="boring">      0f32,                          // x
+</span><span class="boring">      0f32,                          // y
+</span><span class="boring">      0f32,                          // z
+</span><span class="boring">      100f32,                        // width
+</span><span class="boring">      30f32,                         // height
+</span>        );
+
+        /* Create the text */
+<span class="boring">      let font_handle = world.read_resource::&lt;Loader&gt;().load(
+</span><span class="boring">      &quot;font/square.ttf&quot;,
+</span><span class="boring">      TtfFormat,
+</span><span class="boring">      (),
+</span><span class="boring">      &amp;world.read_resource(),
+</span><span class="boring">      );
+</span><span class="boring">
+</span>        let ui_text = UiText::new(
+        // ...
+<span class="boring">      font_handle,                      // font
+</span><span class="boring">      String::from(&quot;Simple Button&quot;),    // text
+</span><span class="boring">      [1.0f32, 1.0f32, 1.0f32, 0.5f32], // color
+</span><span class="boring">      25f32,                            // font_size
+</span><span class="boring">      LineMode::Single,                 // line_mode
+</span><span class="boring">      Anchor::Middle,                   // align
+</span>        );
+
+        /* Building the entity */
+        let btn = world.create_entity()
+            .with(ui_transform)
+            .with(ui_text)
+            .with(Interactable)   
+            .build();
+
+        /* Saving the button in our state struct */
+        self.button = Some(btn);
+    }
+}
+</code></pre>
+<p>All the input received will be handled in the <a href="https://docs.amethyst.rs/master/amethyst/trait.State.html#method.handle_event">handle_event</a>
+method of our state:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::{
+</span><span class="boring">  assets::{AssetStorage, Loader},
+</span><span class="boring">  ecs::{Entity, World, WorldExt},
+</span><span class="boring">  ui::{Anchor, FontHandle, Interactable, LineMode, TtfFormat, UiEventType, UiText, UiTransform},
+</span><span class="boring">  prelude::{Builder, GameData, SimpleState, StateData, SimpleTrans},
+</span><span class="boring">  StateEvent,
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">#[derive(Default)]
+</span><span class="boring">pub struct MenuState {
+</span><span class="boring">  button: Option&lt;Entity&gt;,
+</span><span class="boring">}
+</span>impl SimpleState for MenuState {
+<span class="boring">  fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+</span>    // ...
+<span class="boring">      let world = data.world;
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">      /* Create the transform */
+</span><span class="boring">      let ui_transform = UiTransform::new(
+</span><span class="boring">          String::from(&quot;simple_button&quot;), // id
+</span><span class="boring">          Anchor::Middle,                // anchor
+</span><span class="boring">          Anchor::Middle,                // pivot
+</span><span class="boring">          0f32,                          // x
+</span><span class="boring">          0f32,                          // y
+</span><span class="boring">          0f32,                          // z
+</span><span class="boring">          100f32,                        // width
+</span><span class="boring">          30f32,                         // height
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Create the text */
+</span><span class="boring">      let font_handle = world.read_resource::&lt;Loader&gt;().load(
+</span><span class="boring">         &quot;font/square.ttf&quot;,
+</span><span class="boring">         TtfFormat,
+</span><span class="boring">         (),
+</span><span class="boring">         &amp;world.read_resource(),
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      let ui_text = UiText::new(
+</span><span class="boring">          font_handle,                      // font
+</span><span class="boring">          String::from(&quot;Simple Button&quot;),    // text
+</span><span class="boring">          [1.0f32, 1.0f32, 1.0f32, 0.5f32], // color
+</span><span class="boring">          25f32,                            // font_size
+</span><span class="boring">          LineMode::Single,                 // line_mode
+</span><span class="boring">          Anchor::Middle,                   // align
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Building the entity */
+</span><span class="boring">      let btn = world.create_entity()
+</span><span class="boring">          .with(ui_transform)
+</span><span class="boring">          .with(ui_text)
+</span><span class="boring">          .with(Interactable)   
+</span><span class="boring">          .build();
+</span><span class="boring">
+</span><span class="boring">      /* Saving the button in our state struct */
+</span><span class="boring">      self.button = Some(btn);
+</span><span class="boring">  }
+</span>
+    fn handle_event(
+        &amp;mut self,
+    	_data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;,
+    	event: StateEvent) -&gt; SimpleTrans {
+    	if let StateEvent::Ui(ui_event) = event {
+    		let is_target = ui_event.target == self.button.unwrap();
+
+    		match ui_event.event_type {
+    			UiEventType::Click if is_target =&gt; {
+    				/* . . . */
+    			},
+    			_ =&gt; {
+    				return SimpleTrans::None;
+    			},  
+    		};
+    	}
+
+    	SimpleTrans::None
+    }
+}
+</code></pre>
+<p>We only care about the <code>UiEvent</code>s here, that's why we can use the <code>if-let</code> pattern.
+Then we check if the ui target is the same as our saved entity, in this case it
+surely is since we've only built one entity. After there's a check for click
+event and an additional if statement for our button entity. If it goes well it will
+enter that branch.</p>
+<p>In this branch you can do whatever you like, either quit if you have a <code>QUIT</code> button
+and the user clicks on it, in that case we would return a <code>Trans::Quit</code>, otherwise
+probably something else.</p>
+<p>Let's assume something was pushed on top our <code>MenuState</code> we would need these two methods:</p>
+<ul>
+<li>
+<p><a href="https://docs.amethyst.rs/master/amethyst/trait.State.html#method.on_pause">on_pause</a></p>
+</li>
+<li>
+<p><a href="https://docs.amethyst.rs/master/amethyst/trait.State.html#method.on_resume">on_resume</a></p>
+</li>
+</ul>
+<p>Upon pushing another state the <code>on_pause</code> method will run - here we can hide our button.
+The way we do that is by adding a <a href="https://docs.amethyst.rs/master/amethyst_core/struct.Hidden.html">Hidden</a>
+component to our button:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::{
+</span><span class="boring">  assets::{AssetStorage, Loader},
+</span><span class="boring">  core::Hidden,
+</span><span class="boring">  ecs::{Entity, World, WorldExt},
+</span><span class="boring">  ui::{Anchor, FontHandle, Interactable, LineMode, TtfFormat, UiEventType, UiText, UiTransform},
+</span><span class="boring">  prelude::{Builder, GameData, SimpleState, StateData, SimpleTrans},
+</span><span class="boring">  StateEvent
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">#[derive(Default)]
+</span><span class="boring">pub struct MenuState {
+</span><span class="boring">   button: Option&lt;Entity&gt;,
+</span><span class="boring">}
+</span>impl SimpleState for MenuState {
+    // ...
+<span class="boring">  fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+</span><span class="boring">      let world = data.world;
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">      /* Create the transform */
+</span><span class="boring">      let ui_transform = UiTransform::new(
+</span><span class="boring">          String::from(&quot;simple_button&quot;), // id
+</span><span class="boring">          Anchor::Middle,                // anchor
+</span><span class="boring">          Anchor::Middle,                // pivot
+</span><span class="boring">          0f32,                          // x
+</span><span class="boring">          0f32,                          // y
+</span><span class="boring">          0f32,                          // z
+</span><span class="boring">          100f32,                        // width
+</span><span class="boring">          30f32,                         // height
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Create the text */
+</span><span class="boring">      let font_handle = world.read_resource::&lt;Loader&gt;().load(
+</span><span class="boring">          &quot;font/square.ttf&quot;,
+</span><span class="boring">          TtfFormat,
+</span><span class="boring">          (),
+</span><span class="boring">          &amp;world.read_resource(),
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      let ui_text = UiText::new(
+</span><span class="boring">          font_handle,                      // font
+</span><span class="boring">          String::from(&quot;Simple Button&quot;),    // text
+</span><span class="boring">          [1.0f32, 1.0f32, 1.0f32, 0.5f32], // color
+</span><span class="boring">          25f32,                            // font_size
+</span><span class="boring">          LineMode::Single,                 // line_mode
+</span><span class="boring">          Anchor::Middle,                   // align
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Building the entity */
+</span><span class="boring">      let btn = world.create_entity()
+</span><span class="boring">          .with(ui_transform)
+</span><span class="boring">          .with(ui_text)
+</span><span class="boring">          .with(Interactable)   
+</span><span class="boring">          .build();
+</span><span class="boring">
+</span><span class="boring">      /* Saving the button in our state struct */
+</span><span class="boring">      self.button = Some(btn);
+</span><span class="boring">  }
+</span><span class="boring">
+</span><span class="boring">  fn handle_event(
+</span><span class="boring">      &amp;mut self,
+</span><span class="boring">      _data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;,
+</span><span class="boring">      event: StateEvent) -&gt; SimpleTrans {
+</span><span class="boring">      if let StateEvent::Ui(ui_event) = event {
+</span><span class="boring">          let is_target = ui_event.target == self.button.unwrap();
+</span><span class="boring">
+</span><span class="boring">           match ui_event.event_type {
+</span><span class="boring">              UiEventType::Click if is_target =&gt; {
+</span><span class="boring">              /* . . . */
+</span><span class="boring">              },
+</span><span class="boring">              _ =&gt; {
+</span><span class="boring">                  return SimpleTrans::None;
+</span><span class="boring">              },  
+</span><span class="boring">          };
+</span><span class="boring">      }
+</span><span class="boring">
+</span><span class="boring">      SimpleTrans::None
+</span><span class="boring">  }
+</span>
+    fn on_pause(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        let world = data.world;
+        let mut hiddens = world.write_storage::&lt;Hidden&gt;();
+
+        if let Some(btn) = self.button {
+            let _ = hiddens.insert(btn, Hidden);
+        }
+    }
+}
+</code></pre>
+<p>The same goes for <code>on_resume</code> if we actually want to redisplay the button:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">use amethyst::{
+</span><span class="boring">  assets::{AssetStorage, Loader},
+</span><span class="boring">  core::Hidden,
+</span><span class="boring">  ecs::{Entity, World, WorldExt},
+</span><span class="boring">  ui::{Anchor, FontHandle, Interactable, LineMode, TtfFormat, UiEventType, UiText, UiTransform},
+</span><span class="boring">  prelude::{Builder, GameData, SimpleState, StateData, SimpleTrans},
+</span><span class="boring">  StateEvent
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">#[derive(Default)]
+</span><span class="boring">pub struct MenuState {
+</span><span class="boring">  button: Option&lt;Entity&gt;,
+</span><span class="boring">}
+</span>impl SimpleState for MenuState {
+    // ...
+<span class="boring">  fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+</span><span class="boring">      let world = data.world;
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">      /* Create the transform */
+</span><span class="boring">      let ui_transform = UiTransform::new(
+</span><span class="boring">          String::from(&quot;simple_button&quot;), // id
+</span><span class="boring">          Anchor::Middle,                // anchor
+</span><span class="boring">          Anchor::Middle,                // pivot
+</span><span class="boring">          0f32,                          // x
+</span><span class="boring">          0f32,                          // y
+</span><span class="boring">          0f32,                          // z
+</span><span class="boring">          100f32,                        // width
+</span><span class="boring">          30f32,                         // height
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Create the text */
+</span><span class="boring">      let font_handle = world.read_resource::&lt;Loader&gt;().load(
+</span><span class="boring">          &quot;font/square.ttf&quot;,
+</span><span class="boring">          TtfFormat,
+</span><span class="boring">          (),
+</span><span class="boring">          &amp;world.read_resource(),
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      let ui_text = UiText::new(
+</span><span class="boring">          font_handle,                      // font
+</span><span class="boring">          String::from(&quot;Simple Button&quot;),    // text
+</span><span class="boring">          [1.0f32, 1.0f32, 1.0f32, 0.5f32], // color
+</span><span class="boring">          25f32,                            // font_size
+</span><span class="boring">          LineMode::Single,                 // line_mode
+</span><span class="boring">          Anchor::Middle,                   // align
+</span><span class="boring">      );
+</span><span class="boring">
+</span><span class="boring">      /* Building the entity */
+</span><span class="boring">      let btn = world.create_entity()
+</span><span class="boring">          .with(ui_transform)
+</span><span class="boring">          .with(ui_text)
+</span><span class="boring">          .with(Interactable)   
+</span><span class="boring">          .build();
+</span><span class="boring">
+</span><span class="boring">      /* Saving the button in our state struct */
+</span><span class="boring">          self.button = Some(btn);
+</span><span class="boring">  }
+</span><span class="boring">
+</span><span class="boring">  fn handle_event(
+</span><span class="boring">  &amp;mut self,
+</span><span class="boring">  _data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;,
+</span><span class="boring">  event: StateEvent) -&gt; SimpleTrans {
+</span><span class="boring">      if let StateEvent::Ui(ui_event) = event {
+</span><span class="boring">          let is_target = ui_event.target == self.button.unwrap();
+</span><span class="boring">
+</span><span class="boring">          match ui_event.event_type {
+</span><span class="boring">              UiEventType::Click if is_target =&gt; {
+</span><span class="boring">                  /* . . . */
+</span><span class="boring">              },
+</span><span class="boring">              _ =&gt; {
+</span><span class="boring">                  return SimpleTrans::None;
+</span><span class="boring">              },  
+</span><span class="boring">          };
+</span><span class="boring">      }
+</span><span class="boring">
+</span><span class="boring">      SimpleTrans::None
+</span><span class="boring">  }
+</span><span class="boring">
+</span><span class="boring">  fn on_pause(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+</span><span class="boring">  let world = data.world;
+</span><span class="boring">  let mut hiddens = world.write_storage::&lt;Hidden&gt;();
+</span><span class="boring">
+</span><span class="boring">  if let Some(btn) = self.button {
+</span><span class="boring">     let _ = hiddens.insert(btn, Hidden);
+</span><span class="boring">  }
+</span><span class="boring">}
+</span>
+    fn on_resume(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        let world = data.world; 	
+        let mut hiddens = world.write_storage::&lt;Hidden&gt;();
+
+        if let Some(btn) = self.button {
+            let _ = hiddens.remove(btn);
+        }
+    }
+}
+</code></pre>
+<p>This should provide you with the basic knowledge on building the UI.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ui/interacting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../testing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../ui/interacting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../testing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../style/book.js"></script>
+        
+
+        
+
+    </body>
+</html>

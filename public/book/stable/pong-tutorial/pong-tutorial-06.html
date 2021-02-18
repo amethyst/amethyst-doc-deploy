@@ -1,0 +1,575 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adding audio - Amethyst Documentation</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../style/book.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../getting-started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../concepts/intro.html"><strong aria-hidden="true">3.</strong> Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/state.html"><strong aria-hidden="true">3.1.</strong> State</a></li><li class="chapter-item expanded "><a href="../concepts/entity_and_component.html"><strong aria-hidden="true">3.2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="../concepts/resource.html"><strong aria-hidden="true">3.3.</strong> Resource</a></li><li class="chapter-item expanded "><a href="../concepts/world.html"><strong aria-hidden="true">3.4.</strong> World</a></li><li class="chapter-item expanded "><a href="../concepts/system.html"><strong aria-hidden="true">3.5.</strong> System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../concepts/system/system_initialization.html"><strong aria-hidden="true">3.5.1.</strong> System Initialization</a></li><li class="chapter-item expanded "><a href="../concepts/system/system_desc_derive.html"><strong aria-hidden="true">3.5.2.</strong> SystemDesc Derive</a></li><li class="chapter-item expanded "><a href="../concepts/system/implementing_the_system_desc_trait.html"><strong aria-hidden="true">3.5.3.</strong> Implementing the SystemDesc Trait</a></li></ol></li><li class="chapter-item expanded "><a href="../concepts/dispatcher.html"><strong aria-hidden="true">3.6.</strong> Dispatcher</a></li><li class="chapter-item expanded "><a href="../concepts/event-channel.html"><strong aria-hidden="true">3.7.</strong> Event Channel</a></li></ol></li><li class="chapter-item expanded "><a href="../pong-tutorial.html"><strong aria-hidden="true">4.</strong> Pong Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-01.html"><strong aria-hidden="true">4.1.</strong> Setting up the project</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-02.html"><strong aria-hidden="true">4.2.</strong> Drawing the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-03.html"><strong aria-hidden="true">4.3.</strong> Moving the Paddles</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-04.html"><strong aria-hidden="true">4.4.</strong> Making a Ball Move and Bounce</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-05.html"><strong aria-hidden="true">4.5.</strong> Winning Rounds and Keeping Score</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/pong-tutorial-06.html" class="active"><strong aria-hidden="true">4.6.</strong> Adding audio</a></li><li class="chapter-item expanded "><a href="../pong-tutorial/contribution.html"><strong aria-hidden="true">4.7.</strong> Call for Contribution</a></li></ol></li><li class="chapter-item expanded "><a href="../math.html"><strong aria-hidden="true">5.</strong> Math</a></li><li class="chapter-item expanded "><a href="../input.html"><strong aria-hidden="true">6.</strong> Input</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../input/handling_input.html"><strong aria-hidden="true">6.1.</strong> Handling Input</a></li><li class="chapter-item expanded "><a href="../input/how_to_define_custom_control_bindings.html"><strong aria-hidden="true">6.2.</strong> How to Define Custom Control Bindings</a></li></ol></li><li class="chapter-item expanded "><a href="../assets.html"><strong aria-hidden="true">7.</strong> Assets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../assets/formats.html"><strong aria-hidden="true">7.1.</strong> Formats</a></li><li class="chapter-item expanded "><a href="../assets/how_to_use_assets.html"><strong aria-hidden="true">7.2.</strong> How to Use Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_assets.html"><strong aria-hidden="true">7.3.</strong> How to Define Custom Assets</a></li><li class="chapter-item expanded "><a href="../assets/how_to_define_custom_formats.html"><strong aria-hidden="true">7.4.</strong> How to Define Custom Formats</a></li></ol></li><li class="chapter-item expanded "><a href="../prefabs.html"><strong aria-hidden="true">8.</strong> Prefabs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prefabs/prefabs_in_amethyst.html"><strong aria-hidden="true">8.1.</strong> Prefabs in Amethyst</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_prelude.html"><strong aria-hidden="true">8.2.</strong> How to Define Prefabs: Prelude</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_simple.html"><strong aria-hidden="true">8.3.</strong> How to Define Prefabs: Simple</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_aggregate.html"><strong aria-hidden="true">8.4.</strong> How to Define Prefabs: Aggregate</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_adapter.html"><strong aria-hidden="true">8.5.</strong> How to Define Prefabs: Adapter</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_asset.html"><strong aria-hidden="true">8.6.</strong> How to Define Prefabs: Asset</a></li><li class="chapter-item expanded "><a href="../prefabs/how_to_define_prefabs_multi_handle.html"><strong aria-hidden="true">8.7.</strong> How to Define Prefabs: Multi-Handle</a></li><li class="chapter-item expanded "><a href="../prefabs/prefabs_technical_explanation.html"><strong aria-hidden="true">8.8.</strong> Prefabs Technical Explanation</a></li></ol></li><li class="chapter-item expanded "><a href="../animation.html"><strong aria-hidden="true">9.</strong> Animation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../animation/interpolation.html"><strong aria-hidden="true">9.1.</strong> Interpolation</a></li><li class="chapter-item expanded "><a href="../animation/channel.html"><strong aria-hidden="true">9.2.</strong> Channel</a></li><li class="chapter-item expanded "><a href="../animation/sampler.html"><strong aria-hidden="true">9.3.</strong> Sampler</a></li><li class="chapter-item expanded "><a href="../animation/definition.html"><strong aria-hidden="true">9.4.</strong> Definition</a></li></ol></li><li class="chapter-item expanded "><a href="../controlling_system_execution.html"><strong aria-hidden="true">10.</strong> Controlling System Execution</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../controlling_system_execution/custom_game_data.html"><strong aria-hidden="true">10.1.</strong> Custom GameData</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/state-specific_dispatcher.html"><strong aria-hidden="true">10.2.</strong> State-specific Dispatcher</a></li><li class="chapter-item expanded "><a href="../controlling_system_execution/pausable_systems.html"><strong aria-hidden="true">10.3.</strong> Pausable Systems</a></li></ol></li><li class="chapter-item expanded "><a href="../sprites.html"><strong aria-hidden="true">11.</strong> Sprites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sprites/set_up_the_render_pass.html"><strong aria-hidden="true">11.1.</strong> Set Up The Render Pass</a></li><li class="chapter-item expanded "><a href="../sprites/load_the_texture.html"><strong aria-hidden="true">11.2.</strong> Load The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/define_the_sprite_sheet.html"><strong aria-hidden="true">11.3.</strong> Define The SpriteSheet</a></li><li class="chapter-item expanded "><a href="../sprites/sprite_render_component.html"><strong aria-hidden="true">11.4.</strong> SpriteRender Component</a></li><li class="chapter-item expanded "><a href="../sprites/modify_the_texture.html"><strong aria-hidden="true">11.5.</strong> Modify The Texture</a></li><li class="chapter-item expanded "><a href="../sprites/orthographic_camera.html"><strong aria-hidden="true">11.6.</strong> Orthographic Camera</a></li></ol></li><li class="chapter-item expanded "><a href="../tiles.html"><strong aria-hidden="true">12.</strong> Tiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tiles/setup.html"><strong aria-hidden="true">12.1.</strong> Setup Features and Render Pass</a></li><li class="chapter-item expanded "><a href="../tiles/create_a_tile_map.html"><strong aria-hidden="true">12.2.</strong> Create a Tile Map</a></li></ol></li><li class="chapter-item expanded "><a href="../ui/introduction.html"><strong aria-hidden="true">13.</strong> User Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/simple_button.html"><strong aria-hidden="true">13.1.</strong> Creating a simple button</a></li><li class="chapter-item expanded "><a href="../ui/interacting.html"><strong aria-hidden="true">13.2.</strong> Interacting with the UI</a></li><li class="chapter-item expanded "><a href="../ui/state_interaction.html"><strong aria-hidden="true">13.3.</strong> Interacting through a state</a></li></ol></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">14.</strong> Testing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/test_examples.html"><strong aria-hidden="true">14.1.</strong> Test Examples</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">15.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files.html"><strong aria-hidden="true">16.</strong> Appendix A: Config Files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/a_config_files/arena_config.html"><strong aria-hidden="true">16.1.</strong> Adding an Arena Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/ball_config.html"><strong aria-hidden="true">16.2.</strong> Adding a Ball Config</a></li><li class="chapter-item expanded "><a href="../appendices/a_config_files/paddle_configs.html"><strong aria-hidden="true">16.3.</strong> Adding Paddle Configs</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes.html"><strong aria-hidden="true">17.</strong> Appendix B: Migration Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/cgmath_to_nalgebra.html"><strong aria-hidden="true">17.1.</strong> cgmath to nalgebra</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/rendy_migration.html"><strong aria-hidden="true">17.2.</strong> Rendy Migration</a></li><li class="chapter-item expanded "><a href="../appendices/b_migration_notes/specs_migration.html"><strong aria-hidden="true">17.3.</strong> Specs Migration</a></li></ol></li><li class="chapter-item expanded "><a href="../appendices/c_feature_gates.html"><strong aria-hidden="true">18.</strong> Appendix C: Feature Gates</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst Documentation</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#adding-audio" id="adding-audio">Adding audio</a></h1>
+<p>Now that we have a functional pong game, let's spice things up by adding some audio. In this chapter, we'll add sound effects and background music.</p>
+<h2><a class="header" href="#adding-the-sounds-resource" id="adding-the-sounds-resource">Adding the Sounds Resource</a></h2>
+<p>Let's get started by creating an <code>audio</code> subdirectory under <code>assets</code>. Then download <a href="./audio/bounce.ogg">the bounce sound</a> and <a href="./audio/score.ogg">the score sound</a> and put them in <code>assets/audio</code>.</p>
+<p>Next, we'll create a Resource to store our sound effects in. In <code>main.rs</code>, add:</p>
+<pre><code class="language-rust ignore">mod audio;
+</code></pre>
+<p>Create a file called <code>audio.rs</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span>use amethyst::{
+    assets::Loader,
+    audio::{OggFormat, SourceHandle},
+    ecs::{World, WorldExt},
+};
+
+const BOUNCE_SOUND: &amp;str = &quot;audio/bounce.ogg&quot;;
+const SCORE_SOUND: &amp;str = &quot;audio/score.ogg&quot;;
+
+pub struct Sounds {
+    pub score_sfx: SourceHandle,
+    pub bounce_sfx: SourceHandle,
+}
+
+/// Loads an ogg audio track.
+fn load_audio_track(loader: &amp;Loader, world: &amp;World, file: &amp;str) -&gt; SourceHandle {
+    loader.load(file, OggFormat, (), &amp;world.read_resource())
+}
+
+/// Initialise audio in the world. This will eventually include
+/// the background tracks as well as the sound effects, but for now
+/// we'll just work on sound effects.
+pub fn initialise_audio(world: &amp;mut World) {
+    let sound_effects = {
+        let loader = world.read_resource::&lt;Loader&gt;();
+
+        let sound = Sounds {
+            bounce_sfx: load_audio_track(&amp;loader, &amp;world, BOUNCE_SOUND),
+            score_sfx: load_audio_track(&amp;loader, &amp;world, SCORE_SOUND),
+        };
+
+        sound
+    };
+
+    // Add sound effects to the world. We have to do this in another scope because
+    // world won't let us insert new resources as long as `Loader` is borrowed.
+    world.insert(sound_effects);
+}
+</code></pre>
+<p>Then, we'll need to add the Sounds Resource to our World. Update <code>pong.rs</code>:</p>
+<pre><code class="language-rust ignore">use crate::audio::initialise_audio;
+
+impl SimpleState for Pong {
+    fn on_start(&amp;mut self, data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        // --snip--
+
+        initialise_audio(world);
+    }
+}
+</code></pre>
+<p>Finally, we'll need our game to include the Audio Bundle. In <code>main.rs</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use amethyst::GameDataBuilder;
+</span>use amethyst::audio::AudioBundle;
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // --snip--
+
+    let game_data = GameDataBuilder::default()
+        // ... other bundles
+        .with_bundle(AudioBundle::default())?
+        // ... systems
+    ;
+
+    // --snip--
+<span class="boring">Ok(())
+</span>}
+</code></pre>
+<h2><a class="header" href="#playing-the-bounce-sound" id="playing-the-bounce-sound">Playing the bounce sound</a></h2>
+<p>Let's start by creating a function to play the bounce sound. In <code>audio.rs</code>, add:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span>use amethyst::{
+    assets::AssetStorage,
+    audio::{output::Output, Source, SourceHandle},
+};
+<span class="boring">
+</span><span class="boring">pub struct Sounds {
+</span><span class="boring">    pub score_sfx: SourceHandle,
+</span><span class="boring">    pub bounce_sfx: SourceHandle,
+</span><span class="boring">}
+</span><span class="boring">
+</span>pub fn play_bounce_sound(sounds: &amp;Sounds, storage: &amp;AssetStorage&lt;Source&gt;, output: Option&lt;&amp;Output&gt;) {
+    if let Some(ref output) = output.as_ref() {
+        if let Some(sound) = storage.get(&amp;sounds.bounce_sfx) {
+            output.play_once(sound, 1.0);
+        }
+    }
+}
+</code></pre>
+<p>Then, we'll update the Bounce System to play the sound whenever the ball bounces. Update <code>systems/bounce.rs</code>:</p>
+<pre><code class="language-rust ignore">
+use amethyst::{
+    assets::AssetStorage,
+    audio::{output::Output, Source},
+    ecs::{Read, ReadExpect},
+};
+
+use crate::audio::{play_bounce_sound, Sounds};
+
+impl&lt;'s&gt; System&lt;'s&gt; for BounceSystem {
+    type SystemData = (
+        WriteStorage&lt;'s, Ball&gt;,
+        ReadStorage&lt;'s, Paddle&gt;,
+        ReadStorage&lt;'s, Transform&gt;,
+        Read&lt;'s, AssetStorage&lt;Source&gt;&gt;,
+        ReadExpect&lt;'s, Sounds&gt;,
+        Option&lt;Read&lt;'s, Output&gt;&gt;,
+    );
+
+    fn run(
+        &amp;mut self,
+        (mut balls, paddles, transforms, storage, sounds, audio_output): Self::SystemData,
+    ) {
+        for (ball, transform) in (&amp;mut balls, &amp;transforms).join() {
+            // --snip--
+
+            // Bounce at the top or the bottom of the arena.
+            if (ball_y &lt;= ball.radius &amp;&amp; ball.velocity[1] &lt; 0.0)
+                || (ball_y &gt;= ARENA_HEIGHT - ball.radius &amp;&amp; ball.velocity[1] &gt; 0.0)
+            {
+                ball.velocity[1] = -ball.velocity[1];
+                play_bounce_sound(&amp;*sounds, &amp;storage, audio_output.as_deref());
+            }
+
+            // Bounce at the paddles.
+            for (paddle, paddle_transform) in (&amp;paddles, &amp;transforms).join() {
+                // --snip--
+
+                if point_in_rect(
+                    // --snip--
+                ) {
+                    if (paddle.side == Side::Left &amp;&amp; ball.velocity[0] &lt; 0.0)
+                        || (paddle.side == Side::Right &amp;&amp; ball.velocity[0] &gt; 0.0)
+                    {
+                        ball.velocity[0] = -ball.velocity[0];
+                        play_bounce_sound(&amp;*sounds, &amp;storage, audio_output.as_deref());
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>Now try running your game (<code>cargo run</code>). Don't forget to turn up your volume!</p>
+<h2><a class="header" href="#playing-the-score-sound" id="playing-the-score-sound">Playing the score sound</a></h2>
+<p>Just as we did for the bounce sound, let's create a function to play the score sound. Update <code>audio.rs</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use amethyst::{
+</span><span class="boring">    audio::{output::Output, Source, SourceHandle},
+</span><span class="boring">    assets::AssetStorage,
+</span><span class="boring">};
+</span><span class="boring">
+</span><span class="boring">pub struct Sounds {
+</span><span class="boring">    pub score_sfx: SourceHandle,
+</span><span class="boring">    pub bounce_sfx: SourceHandle,
+</span><span class="boring">}
+</span><span class="boring">
+</span>pub fn play_score_sound(sounds: &amp;Sounds, storage: &amp;AssetStorage&lt;Source&gt;, output: Option&lt;&amp;Output&gt;) {
+    if let Some(ref output) = output.as_ref() {
+        if let Some(sound) = storage.get(&amp;sounds.score_sfx) {
+            output.play_once(sound, 1.0);
+        }
+    }
+}
+</code></pre>
+<p>Then, we'll update our Winner System to play the score sound whenever a player scores. Update <code>systems/winner.rs</code>:</p>
+<pre><code class="language-rust ignore">use amethyst::{
+    assets::AssetStorage,
+    audio::{output::Output, Source},
+    ecs::Read,
+};
+use crate::audio::{play_score_sound, Sounds};
+
+impl&lt;'s&gt; System&lt;'s&gt; for WinnerSystem {
+    type SystemData = (
+        WriteStorage&lt;'s, Ball&gt;,
+        WriteStorage&lt;'s, Transform&gt;,
+        WriteStorage&lt;'s, UiText&gt;,
+        Write&lt;'s, ScoreBoard&gt;,
+        ReadExpect&lt;'s, ScoreText&gt;,
+        Read&lt;'s, AssetStorage&lt;Source&gt;&gt;,
+        ReadExpect&lt;'s, Sounds&gt;,
+        Option&lt;Read&lt;'s, Output&gt;&gt;,
+    );
+
+
+    fn run(&amp;mut self, (
+        mut balls,
+        mut locals,
+        mut ui_text,
+        mut scores,
+        score_text,
+        storage,
+        sounds,
+        audio_output,
+    ): Self::SystemData)  {
+        for (ball, transform) in (&amp;mut balls, &amp;mut locals).join() {
+            // --snip--
+
+            if did_hit {
+                ball.velocity[0] = -ball.velocity[0]; // Reverse Direction
+                transform.set_translation_x(ARENA_WIDTH / 2.0); // Reset Position
+                transform.set_translation_y(ARENA_HEIGHT / 2.0); // Reset Position
+
+                play_score_sound(&amp;*sounds, &amp;storage, audio_output.as_deref());
+
+                // Print the scoreboard.
+                println!(
+                    &quot;Score: | {:^3} | {:^3} |&quot;,
+                    scores.score_left, scores.score_right
+                );
+            }
+        }
+    }
+}
+</code></pre>
+<p>Now try running your game. Yay, we successfully added sound effects to our game! 🎉</p>
+<p>Next, let's take our game to the next level by adding some background music.</p>
+<h2><a class="header" href="#adding-background-music" id="adding-background-music">Adding background music</a></h2>
+<p>Let's start by downloading <a href="./audio/Computer_Music_All-Stars_-_Albatross_v2.ogg">Albatross</a> and <a href="./audio/Computer_Music_All-Stars_-_Wheres_My_Jetpack.ogg">Where's My Jetpack?</a> Put these files in the <code>assets/audio</code> directory.</p>
+<p>In <code>audio.rs</code>, add the paths to the music tracks below the paths to the sound effects:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen">const BOUNCE_SOUND: &amp;str = &quot;audio/bounce.ogg&quot;;
+const SCORE_SOUND: &amp;str = &quot;audio/score.ogg&quot;;
+
+const MUSIC_TRACKS: &amp;[&amp;str] = &amp;[
+    &quot;audio/Computer_Music_All-Stars_-_Wheres_My_Jetpack.ogg&quot;,
+    &quot;audio/Computer_Music_All-Stars_-_Albatross_v2.ogg&quot;,
+];
+</code></pre>
+<p>Then, create a Music Resource:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span>use std::{iter::Cycle, vec::IntoIter};
+<span class="boring">
+</span><span class="boring">use amethyst::audio::SourceHandle;
+</span>
+pub struct Music {
+    pub music: Cycle&lt;IntoIter&lt;SourceHandle&gt;&gt;,
+}
+</code></pre>
+<p>Since we only have two music tracks, we use a <code>Cycle</code> to infinitely alternate between the two.</p>
+<p>Next, we need to add the Music Resource to our World. Update <code>initialise_audio</code>:</p>
+<pre><code class="language-rust edition2018 no_run noplaypen"><span class="boring">extern crate amethyst;
+</span><span class="boring">
+</span><span class="boring">use std::{iter::Cycle, vec::IntoIter};
+</span><span class="boring">
+</span>use amethyst::{
+    audio::{AudioSink, SourceHandle},
+    assets::Loader,
+    ecs::{World, WorldExt},
+};
+<span class="boring">
+</span><span class="boring">const BOUNCE_SOUND: &amp;str = &quot;audio/bounce.ogg&quot;;
+</span><span class="boring">const SCORE_SOUND: &amp;str = &quot;audio/score.ogg&quot;;
+</span><span class="boring">
+</span><span class="boring">const MUSIC_TRACKS: &amp;[&amp;str] = &amp;[
+</span><span class="boring">    &quot;audio/Computer_Music_All-Stars_-_Wheres_My_Jetpack.ogg&quot;,
+</span><span class="boring">    &quot;audio/Computer_Music_All-Stars_-_Albatross_v2.ogg&quot;,
+</span><span class="boring">];
+</span><span class="boring">
+</span><span class="boring">fn load_audio_track(loader: &amp;Loader, world: &amp;World, file: &amp;str) -&gt; SourceHandle {
+</span><span class="boring">    unimplemented!()
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct Music {
+</span><span class="boring">    pub music: Cycle&lt;IntoIter&lt;SourceHandle&gt;&gt;,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct Sounds {
+</span><span class="boring">    pub score_sfx: SourceHandle,
+</span><span class="boring">    pub bounce_sfx: SourceHandle,
+</span><span class="boring">}
+</span>
+pub fn initialise_audio(world: &amp;mut World) {
+    let (sound_effects, music) = {
+        let loader = world.read_resource::&lt;Loader&gt;();
+
+        let mut sink = world.write_resource::&lt;AudioSink&gt;();
+        sink.set_volume(0.25); // Music is a bit loud, reduce the volume.
+
+        let music = MUSIC_TRACKS
+            .iter()
+            .map(|file| load_audio_track(&amp;loader, &amp;world, file))
+            .collect::&lt;Vec&lt;_&gt;&gt;()
+            .into_iter()
+            .cycle();
+        let music = Music { music };
+
+        let sound = Sounds {
+            bounce_sfx: load_audio_track(&amp;loader, &amp;world, BOUNCE_SOUND),
+            score_sfx: load_audio_track(&amp;loader, &amp;world, SCORE_SOUND),
+        };
+
+        (sound, music)
+    };
+
+    // Add sound effects and music to the world. We have to do this in another scope because
+    // world won't let us insert new resources as long as `Loader` is borrowed.
+    world.insert(sound_effects);
+    world.insert(music);
+}
+</code></pre>
+<p>Finally, let's add a DJ System to our game to play the music. In <code>main.rs</code>:</p>
+<pre><code class="language-rust ignore">use amethyst::audio::DjSystemDesc;
+use crate::audio::Music;
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // --snip--
+
+    let game_data = GameDataBuilder::default()
+        // ... bundles
+        .with_system_desc(
+            DjSystemDesc::new(|music: &amp;mut Music| music.music.next()),
+            &quot;dj_system&quot;,
+            &amp;[],
+        )
+        // ... other systems
+        ;
+
+    // --snip--
+<span class="boring">Ok(())
+</span>}
+</code></pre>
+<p>Now run your game and enjoy the tunes!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../pong-tutorial/pong-tutorial-05.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../pong-tutorial/contribution.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../pong-tutorial/pong-tutorial-05.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../pong-tutorial/contribution.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../style/book.js"></script>
+        
+
+        
+
+    </body>
+</html>

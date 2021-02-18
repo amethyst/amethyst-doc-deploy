@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rendy Migration - Amethyst Documentation</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../../style/book.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../getting-started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../../concepts/intro.html"><strong aria-hidden="true">3.</strong> Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../concepts/state.html"><strong aria-hidden="true">3.1.</strong> State</a></li><li class="chapter-item expanded "><a href="../../concepts/entity_and_component.html"><strong aria-hidden="true">3.2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="../../concepts/resource.html"><strong aria-hidden="true">3.3.</strong> Resource</a></li><li class="chapter-item expanded "><a href="../../concepts/world.html"><strong aria-hidden="true">3.4.</strong> World</a></li><li class="chapter-item expanded "><a href="../../concepts/system.html"><strong aria-hidden="true">3.5.</strong> System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../concepts/system/system_initialization.html"><strong aria-hidden="true">3.5.1.</strong> System Initialization</a></li><li class="chapter-item expanded "><a href="../../concepts/system/system_desc_derive.html"><strong aria-hidden="true">3.5.2.</strong> SystemDesc Derive</a></li><li class="chapter-item expanded "><a href="../../concepts/system/implementing_the_system_desc_trait.html"><strong aria-hidden="true">3.5.3.</strong> Implementing the SystemDesc Trait</a></li></ol></li><li class="chapter-item expanded "><a href="../../concepts/dispatcher.html"><strong aria-hidden="true">3.6.</strong> Dispatcher</a></li><li class="chapter-item expanded "><a href="../../concepts/event-channel.html"><strong aria-hidden="true">3.7.</strong> Event Channel</a></li></ol></li><li class="chapter-item expanded "><a href="../../pong-tutorial.html"><strong aria-hidden="true">4.</strong> Pong Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-01.html"><strong aria-hidden="true">4.1.</strong> Setting up the project</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-02.html"><strong aria-hidden="true">4.2.</strong> Drawing the Paddles</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-03.html"><strong aria-hidden="true">4.3.</strong> Moving the Paddles</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-04.html"><strong aria-hidden="true">4.4.</strong> Making a Ball Move and Bounce</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-05.html"><strong aria-hidden="true">4.5.</strong> Winning Rounds and Keeping Score</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/pong-tutorial-06.html"><strong aria-hidden="true">4.6.</strong> Adding audio</a></li><li class="chapter-item expanded "><a href="../../pong-tutorial/contribution.html"><strong aria-hidden="true">4.7.</strong> Call for Contribution</a></li></ol></li><li class="chapter-item expanded "><a href="../../math.html"><strong aria-hidden="true">5.</strong> Math</a></li><li class="chapter-item expanded "><a href="../../input.html"><strong aria-hidden="true">6.</strong> Input</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../input/handling_input.html"><strong aria-hidden="true">6.1.</strong> Handling Input</a></li><li class="chapter-item expanded "><a href="../../input/how_to_define_custom_control_bindings.html"><strong aria-hidden="true">6.2.</strong> How to Define Custom Control Bindings</a></li></ol></li><li class="chapter-item expanded "><a href="../../assets.html"><strong aria-hidden="true">7.</strong> Assets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../assets/formats.html"><strong aria-hidden="true">7.1.</strong> Formats</a></li><li class="chapter-item expanded "><a href="../../assets/how_to_use_assets.html"><strong aria-hidden="true">7.2.</strong> How to Use Assets</a></li><li class="chapter-item expanded "><a href="../../assets/how_to_define_custom_assets.html"><strong aria-hidden="true">7.3.</strong> How to Define Custom Assets</a></li><li class="chapter-item expanded "><a href="../../assets/how_to_define_custom_formats.html"><strong aria-hidden="true">7.4.</strong> How to Define Custom Formats</a></li></ol></li><li class="chapter-item expanded "><a href="../../prefabs.html"><strong aria-hidden="true">8.</strong> Prefabs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../prefabs/prefabs_in_amethyst.html"><strong aria-hidden="true">8.1.</strong> Prefabs in Amethyst</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_prelude.html"><strong aria-hidden="true">8.2.</strong> How to Define Prefabs: Prelude</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_simple.html"><strong aria-hidden="true">8.3.</strong> How to Define Prefabs: Simple</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_aggregate.html"><strong aria-hidden="true">8.4.</strong> How to Define Prefabs: Aggregate</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_adapter.html"><strong aria-hidden="true">8.5.</strong> How to Define Prefabs: Adapter</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_asset.html"><strong aria-hidden="true">8.6.</strong> How to Define Prefabs: Asset</a></li><li class="chapter-item expanded "><a href="../../prefabs/how_to_define_prefabs_multi_handle.html"><strong aria-hidden="true">8.7.</strong> How to Define Prefabs: Multi-Handle</a></li><li class="chapter-item expanded "><a href="../../prefabs/prefabs_technical_explanation.html"><strong aria-hidden="true">8.8.</strong> Prefabs Technical Explanation</a></li></ol></li><li class="chapter-item expanded "><a href="../../animation.html"><strong aria-hidden="true">9.</strong> Animation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../animation/interpolation.html"><strong aria-hidden="true">9.1.</strong> Interpolation</a></li><li class="chapter-item expanded "><a href="../../animation/channel.html"><strong aria-hidden="true">9.2.</strong> Channel</a></li><li class="chapter-item expanded "><a href="../../animation/sampler.html"><strong aria-hidden="true">9.3.</strong> Sampler</a></li><li class="chapter-item expanded "><a href="../../animation/definition.html"><strong aria-hidden="true">9.4.</strong> Definition</a></li></ol></li><li class="chapter-item expanded "><a href="../../controlling_system_execution.html"><strong aria-hidden="true">10.</strong> Controlling System Execution</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../controlling_system_execution/custom_game_data.html"><strong aria-hidden="true">10.1.</strong> Custom GameData</a></li><li class="chapter-item expanded "><a href="../../controlling_system_execution/state-specific_dispatcher.html"><strong aria-hidden="true">10.2.</strong> State-specific Dispatcher</a></li><li class="chapter-item expanded "><a href="../../controlling_system_execution/pausable_systems.html"><strong aria-hidden="true">10.3.</strong> Pausable Systems</a></li></ol></li><li class="chapter-item expanded "><a href="../../sprites.html"><strong aria-hidden="true">11.</strong> Sprites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../sprites/set_up_the_render_pass.html"><strong aria-hidden="true">11.1.</strong> Set Up The Render Pass</a></li><li class="chapter-item expanded "><a href="../../sprites/load_the_texture.html"><strong aria-hidden="true">11.2.</strong> Load The Texture</a></li><li class="chapter-item expanded "><a href="../../sprites/define_the_sprite_sheet.html"><strong aria-hidden="true">11.3.</strong> Define The SpriteSheet</a></li><li class="chapter-item expanded "><a href="../../sprites/sprite_render_component.html"><strong aria-hidden="true">11.4.</strong> SpriteRender Component</a></li><li class="chapter-item expanded "><a href="../../sprites/modify_the_texture.html"><strong aria-hidden="true">11.5.</strong> Modify The Texture</a></li><li class="chapter-item expanded "><a href="../../sprites/orthographic_camera.html"><strong aria-hidden="true">11.6.</strong> Orthographic Camera</a></li></ol></li><li class="chapter-item expanded "><a href="../../tiles.html"><strong aria-hidden="true">12.</strong> Tiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tiles/setup.html"><strong aria-hidden="true">12.1.</strong> Setup Features and Render Pass</a></li><li class="chapter-item expanded "><a href="../../tiles/create_a_tile_map.html"><strong aria-hidden="true">12.2.</strong> Create a Tile Map</a></li></ol></li><li class="chapter-item expanded "><a href="../../ui/introduction.html"><strong aria-hidden="true">13.</strong> User Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../ui/simple_button.html"><strong aria-hidden="true">13.1.</strong> Creating a simple button</a></li><li class="chapter-item expanded "><a href="../../ui/interacting.html"><strong aria-hidden="true">13.2.</strong> Interacting with the UI</a></li><li class="chapter-item expanded "><a href="../../ui/state_interaction.html"><strong aria-hidden="true">13.3.</strong> Interacting through a state</a></li></ol></li><li class="chapter-item expanded "><a href="../../testing.html"><strong aria-hidden="true">14.</strong> Testing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../testing/test_examples.html"><strong aria-hidden="true">14.1.</strong> Test Examples</a></li></ol></li><li class="chapter-item expanded "><a href="../../glossary.html"><strong aria-hidden="true">15.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../../appendices/a_config_files.html"><strong aria-hidden="true">16.</strong> Appendix A: Config Files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendices/a_config_files/arena_config.html"><strong aria-hidden="true">16.1.</strong> Adding an Arena Config</a></li><li class="chapter-item expanded "><a href="../../appendices/a_config_files/ball_config.html"><strong aria-hidden="true">16.2.</strong> Adding a Ball Config</a></li><li class="chapter-item expanded "><a href="../../appendices/a_config_files/paddle_configs.html"><strong aria-hidden="true">16.3.</strong> Adding Paddle Configs</a></li></ol></li><li class="chapter-item expanded "><a href="../../appendices/b_migration_notes.html"><strong aria-hidden="true">17.</strong> Appendix B: Migration Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendices/b_migration_notes/cgmath_to_nalgebra.html"><strong aria-hidden="true">17.1.</strong> cgmath to nalgebra</a></li><li class="chapter-item expanded "><a href="../../appendices/b_migration_notes/rendy_migration.html" class="active"><strong aria-hidden="true">17.2.</strong> Rendy Migration</a></li><li class="chapter-item expanded "><a href="../../appendices/b_migration_notes/specs_migration.html"><strong aria-hidden="true">17.3.</strong> Specs Migration</a></li></ol></li><li class="chapter-item expanded "><a href="../../appendices/c_feature_gates.html"><strong aria-hidden="true">18.</strong> Appendix C: Feature Gates</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst Documentation</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#rendy-migration-guide" id="rendy-migration-guide">Rendy: Migration Guide</a></h1>
+<h2><a class="header" href="#audio" id="audio">Audio</a></h2>
+<ul>
+<li><code>AudioFormat</code> no longer exists, you have to use the lower level types -- <code>Mp3Format</code>, <code>WavFormat</code>, <code>OggFormat</code>, <code>FlacFormat</code>.</li>
+</ul>
+<h2><a class="header" href="#assets" id="assets">Assets</a></h2>
+<ul>
+<li><code>SimpleFormat</code> trait has merged into <code>Format</code>.</li>
+<li><code>Format::Options</code> associated type has been removed; options are now stored in the format instance.</li>
+<li><code>NAME</code> associated constant is now a method call.</li>
+<li><code>Format&lt;A&gt;</code> type parameter now takes in <code>Format&lt;D&gt;</code>, where <code>D</code> is <code>A::Data</code>.</li>
+<li>Implement <code>import_simple</code> instead of <code>import</code>.</li>
+<li><code>Loader::load</code> no longer takes in the <code>Options</code> parameter.</li>
+</ul>
+<h2><a class="header" href="#input" id="input">Input</a></h2>
+<ul>
+<li>
+<p><code>Bindings&lt;String, String&gt;</code> is now <code>Bindings&lt;StringBindings&gt;</code>.</p>
+</li>
+<li>
+<p><code>Bindings&lt;AX, AC&gt;</code> is now <code>Bindings&lt;T&gt;</code>, where <code>T</code> is a new type you must implement:</p>
+<pre><code class="language-rust ignore">pub struct ControlBindings;
+
+impl BindingTypes for ControlBindings {
+    type Axis = PlayerAxisControl;
+    type Action = PlayerActionControl;
+}
+</code></pre>
+<p>Diff:</p>
+<pre><code class="language-patch">-Bindings&lt;PlayerAxisControl, PlayerActionControl&gt;
++Bindings&lt;ControlBindings&gt;
+</code></pre>
+</li>
+<li>
+<p><code>InputBundle</code> type parameters:</p>
+<pre><code class="language-patch">-InputBundle::&lt;String, String&gt;::new()
++InputBundle::&lt;StringBindings&gt;::new()
+</code></pre>
+</li>
+<li>
+<p><code>UiBundle</code> type parameters:</p>
+<pre><code class="language-patch">+use amethyst::renderer::types::DefaultBackend;
+
+-UiBundle::&lt;String, String&gt;::new()
++UiBundle::&lt;DefaultBackend, StringBindings&gt;::new()
+</code></pre>
+</li>
+</ul>
+<h2><a class="header" href="#window" id="window">Window</a></h2>
+<ul>
+<li>
+<p><code>DisplayConfig</code>'s <code>fullscreen</code> field is now an <code>Option&lt;MonitorIdent&gt;</code>. <code>MonitorIdent</code> is <code>MonitorIdent(u16, String)</code>, indicating the native monitor display ID, and its <a href="https://docs.rs/winit/0.19.1/winit/struct.MonitorId.html#method.get_name">name</a>.</p>
+</li>
+<li>
+<p><code>WindowBundle</code> is now separate from <code>amethyst_renderer</code>.</p>
+<pre><code class="language-rust ignore">use amethyst::window::WindowBundle;
+
+game_data.with_bundle(WindowBundle::from_config_file(display_config_path))?;
+</code></pre>
+<p>This system is loaded automatically by the <code>RenderToWindow</code> render plugin.</p>
+</li>
+</ul>
+<h2><a class="header" href="#renderer" id="renderer">Renderer</a></h2>
+<ul>
+<li>
+<p><code>amethyst::renderer::VirtualKeyCode</code> is now <code>amethyst::input::VirtualKeyCode</code></p>
+</li>
+<li>
+<p><code>amethyst::renderer::DisplayConfig</code> is now <code>amethyst::window::DisplayConfig</code></p>
+</li>
+<li>
+<p><code>amethyst::renderer::WindowEvent</code> is now <code>amethyst::winit::WindowEvent</code></p>
+</li>
+<li>
+<p><code>amethyst::renderer::Event</code> is no longer re-exported. Use <code>amethyst::winit::Event</code></p>
+</li>
+<li>
+<p><code>amethyst::renderer::Transparent</code> is now under <code>amethyst::renderer::transparent::Transparent</code>.</p>
+</li>
+<li>
+<p><code>amethyst::renderer::Visibility</code> is now under <code>amethyst::renderer::visibility::Visibility</code>.</p>
+</li>
+<li>
+<p><code>TextureHandle</code> type alias no longer exists, use <code>Handle&lt;Texture&gt;</code>.</p>
+</li>
+<li>
+<p><code>Flipped</code> component is removed. You can specify <code>flipped</code> during sprite loading, or mutating <code>Transform</code> at run time.</p>
+</li>
+<li>
+<p>To load a texture in memory, you can't use <code>[0.; 4].into()</code> as the <code>TextureData</code> anymore. Use:</p>
+<pre><code class="language-rust ignore">use amethyst::{
+    assets::{AssetStorage, Handle, Loader, Prefab, PrefabLoader},
+    ecs::World,
+    renderer::{
+        loaders::load_from_srgba,
+        palette::Srgba,
+        types::TextureData,
+        Texture,
+    },
+};
+
+let loader = world.read_resource::&lt;Loader&gt;();
+let texture_assets = world.read_resource::&lt;AssetStorage&lt;Texture&gt;&gt;();
+let texture_builder = load_from_srgba(Srgba::new(0., 0., 0., 0.));
+let texture_handle: Handle&lt;Texture&gt; =
+    loader.load_from_data(TextureData::from(texture_builder), (), &amp;texture_assets);
+</code></pre>
+</li>
+<li>
+<p><code>RenderBundle</code> and <code>Pipeline</code> are gone, now you need to use the <code>RenderingBundle</code>, for example:</p>
+<p>In <code>main.rs</code>:</p>
+<pre><code class="language-rust ignore">use amethyst::renderer::{types::DefaultBackend, RenderingSystem};
+
+let game_data = GameDataBuilder::default()
+    .with_bundle(
+        RenderingBundle::&lt;DefaultBackend&gt;::new()
+            .with_plugin(
+                RenderToWindow::from_config_path(display_config)
+                    .with_clear([0.34, 0.36, 0.52, 1.0]),
+            )
+            .with_plugin(RenderShaded3D::default())
+            .with_plugin(RenderDebugLines::default())
+            .with_plugin(RenderSkybox::with_colors(
+                Srgb::new(0.82, 0.51, 0.50),
+                Srgb::new(0.18, 0.11, 0.85),
+            )),
+    )?;
+</code></pre>
+</li>
+<li>
+<p>Render passes can be integrated into amethyst by using the newly introduced <code>RenderPlugin</code> trait, for example:</p>
+<pre><code class="language-rust ignore">pub struct RenderCustom {
+    target: Target,
+}
+
+impl RenderTerrain {
+    /// Set target to which 2d sprites will be rendered.
+    pub fn with_target(mut self, target: Target) -&gt; Self {
+        self.target = target;
+        self
+    }
+}
+
+
+impl&lt;B: Backend&gt; RenderPlugin&lt;B&gt; for RenderCustom {
+    fn on_build&lt;'a, 'b&gt;(
+        &amp;mut self,
+        builder: &amp;mut DispatcherBuilder&lt;'a, 'b&gt;,
+    ) -&gt; Result&lt;(), Error&gt; {
+        // You can add systems that are needed by your renderpass here
+        Ok(())
+    }
+
+    fn on_plan(
+        &amp;mut self,
+        plan: &amp;mut RenderPlan&lt;B&gt;,
+        _factory: &amp;mut Factory&lt;B&gt;,
+        _res: &amp;Resources,
+    ) -&gt; Result&lt;(), Error&gt; {
+        plan.extend_target(self.target, |ctx| {
+            ctx.add(RenderOrder::Opaque, DrawCustomDesc::new().builder())?;
+            Ok(())
+        });
+        Ok(())
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><code>RenderBundle::with_sprite_sheet_processor()</code> is replaced by:</p>
+<pre><code class="language-rust ignore">game_data.with(
+    Processor::&lt;SpriteSheet&gt;::new(),
+    &quot;sprite_sheet_processor&quot;,
+    &amp;[],
+);
+</code></pre>
+<p>This system is added automatically by each of the 3D render plugins (<code>RenderPbr3D</code>, <code>RenderShaded3D</code>, <code>RenderFlat3D</code>).</p>
+</li>
+<li>
+<p><code>RenderBundle::with_sprite_visibility_sorting()</code> is replaced by:</p>
+<pre><code class="language-rust ignore">use amethyst::rendy::sprite_visibility::SpriteVisibilitySortingSystem;
+
+game_data.with(
+    SpriteVisibilitySortingSystem::new(),
+    &quot;sprite_visibility_system&quot;,
+    &amp;[&quot;transform_system&quot;],
+);
+</code></pre>
+<p>This system is added automatically by the <code>RenderFlat2D</code> render plugin.</p>
+</li>
+<li>
+<p>Sprite transparency is no longer a separate flag. Instead of <code>with_transparency</code>, you add a second render pass using <code>DrawFlat2DTransparent</code>. See the <a href="https://github.com/amethyst/amethyst/blob/7ed8432d8eef2b2727d0c4188b91e5823ae03548/examples/sprites_ordered/main.rs#L463-L482"><code>sprites_ordered</code> example</a>.</p>
+</li>
+</ul>
+<p>Camera changes:</p>
+<ul>
+<li>
+<p><code>CameraPrefab</code> is no longer nested:</p>
+<pre><code class="language-patch">-camera: Perspective((aspect: 1.3, fovy: 1.0471975512, znear: 0.1, zfar: 2000.0))
++camera: Perspective(aspect: 1.3, fovy: 1.0471975512, znear: 0.1, zfar: 2000.0)
+</code></pre>
+</li>
+<li>
+<p><code>nalgebra</code>'s <code>Perspective3</code>/<code>Orthographic3</code> are <em>no longer compatible</em>, as they use OpenGL coordinates instead of Vulkan.</p>
+<p>Amethyst now has amethyst::rendy::camera::Orthographic and Perspective, respectively. These types are mostly feature-parity with nalgebra, but correct for vulkan. You can use as_matrix to get the inner Matrix4 value.</p>
+</li>
+<li>
+<p>Camera now stores <code>Projection</code>, which means it is type-safe.</p>
+</li>
+<li>
+<p>You can no longer serialize raw camera matrices, only camera parameter types.</p>
+</li>
+</ul>
+<p>Z-axis direction clarifications:</p>
+<ul>
+<li>In Vulkan, <code>Z+</code> is away.</li>
+<li>in OpenGL, <code>Z-</code> is away.</li>
+<li>In amethyst_renderer, <code>Z-</code> is away (world coordinates).</li>
+<li>In amethyst_rendy, <code>Z-</code> is away (world coordinates).</li>
+</ul>
+<h2><a class="header" href="#amethyst-test" id="amethyst-test">Amethyst Test</a></h2>
+<ul>
+<li>
+<p>The <code>render_base</code> function has been changed:</p>
+<pre><code class="language-patch">-let visibility = false;
+-AmethystApplication::render_base(&quot;test_name&quot;, visibility);
++use amethyst::renderer::{types::DefaultBackend, RenderEmptyBundle};
++AmethystApplication::blank()
++    .with_bundle(RenderEmptyBundle::&lt;DefaultBackend&gt;::new());
+</code></pre>
+</li>
+<li>
+<p>The <code>mark_render()</code> and <code>.run()</code> chained call is replaced by a single <code>run_isolated()</code> call.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../appendices/b_migration_notes/cgmath_to_nalgebra.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../appendices/b_migration_notes/specs_migration.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../appendices/b_migration_notes/cgmath_to_nalgebra.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../appendices/b_migration_notes/specs_migration.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../../style/book.js"></script>
+        
+
+        
+
+    </body>
+</html>
