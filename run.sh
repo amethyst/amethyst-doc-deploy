@@ -19,8 +19,8 @@ echo ---------------------------------------------
 echo - Preping Rust...
 echo ---------------------------------------------
 
-rustup default stable
-cargo install mdbook
+#rustup default stable
+#cargo install mdbook
 
 echo ---------------------------------------------
 echo - Generating Stable Book...
@@ -32,7 +32,7 @@ echo ---------------------------------------------
 echo - Generating Stable API...
 echo ---------------------------------------------
 
-cargo doc --features="vulkan"
+cargo doc --release --features="vulkan" --no-deps
 
 echo ---------------------------------------------
 echo - Moving stable API and Book to public...
