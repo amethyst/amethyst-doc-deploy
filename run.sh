@@ -21,6 +21,7 @@ echo ---------------------------------------------
 
 sudo apt install libasound2-dev
 
+rustup default stable
 cargo install mdbook
 
 echo ---------------------------------------------
