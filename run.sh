@@ -34,7 +34,7 @@ echo ---------------------------------------------
 echo - Generating Stable API...
 echo ---------------------------------------------
 
-cargo doc --release --features="vulkan" --no-deps
+cargo doc --release --features="vulkan" --no-deps --workspace
 
 echo ---------------------------------------------
 echo - Moving stable API and Book to public...
@@ -69,7 +69,7 @@ echo ---------------------------------------------
 echo - Generating Latest API...
 echo ---------------------------------------------
 
-cargo doc --release --features="vulkan" --no-deps
+cargo doc --release --features="vulkan" --no-deps --workspace
 
 echo ---------------------------------------------
 echo - Moving Latest API and Book to public...
