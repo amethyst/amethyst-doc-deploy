@@ -53,38 +53,38 @@ mkdir -p ../public/api/stable
 cp -r target/doc/* ../public/api/stable/
 
 echo Skipping latest API and Doc...
-echo ---------------------------------------------
-echo - Moving to latest main
-echo ---------------------------------------------
-
-git checkout main
-
-echo ---------------------------------------------
-echo - Generating Latest Book...
-echo ---------------------------------------------
-
-mdbook build book
-
-echo ---------------------------------------------
-echo - Generating Latest API...
-echo ---------------------------------------------
-
-cargo doc --release --features="vulkan" --no-deps --workspace
-
-echo ---------------------------------------------
-echo - Moving Latest API and Book to public...
-echo ---------------------------------------------
-
-pwd
-
-# Makes docs.amethyst.rs/book/latest
-echo copying book...
-mkdir -p ../public/book/latest
-cp -r book/book/* ../public/book/latest/
-
-# Makes docs.amethyst.rs/api/latest
-echo copying api...
-mkdir -p ../public/api/latest
-cp -r target/doc/* ../public/api/latest/
-
+# echo ---------------------------------------------
+# echo - Moving to latest main
+# echo ---------------------------------------------
+# 
+# git checkout main
+# 
+# echo ---------------------------------------------
+# echo - Generating Latest Book...
+# echo ---------------------------------------------
+# 
+# mdbook build book
+# 
+# echo ---------------------------------------------
+# echo - Generating Latest API...
+# echo ---------------------------------------------
+# 
+# cargo doc --release --features="vulkan" --no-deps --workspace
+# 
+# echo ---------------------------------------------
+# echo - Moving Latest API and Book to public...
+# echo ---------------------------------------------
+# 
+# pwd
+# 
+# # Makes docs.amethyst.rs/book/latest
+# echo copying book...
+# mkdir -p ../public/book/latest
+# cp -r book/book/* ../public/book/latest/
+# 
+# # Makes docs.amethyst.rs/api/latest
+# echo copying api...
+# mkdir -p ../public/api/latest
+# cp -r target/doc/* ../public/api/latest/
+# 
 echo Done...
