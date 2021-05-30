@@ -19,7 +19,7 @@ echo ---------------------------------------------
 echo - Preping Rust...
 echo ---------------------------------------------
 
-sudo apt install libasound2-dev
+sudo apt install libasound2-dev libsdl2-dev
 
 rustup default stable
 cargo install mdbook
